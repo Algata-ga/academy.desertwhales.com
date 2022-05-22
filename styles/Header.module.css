@@ -1,0 +1,19 @@
+.header{
+    width: 100%;
+    height: 70px;
+    background: red;
+}
+.nav{
+    display: flex;
+}
+.logo{
+    display: flex;
+}
+.logo img{
+    height: 70px;
+}
+.logo h6{
+    margin: 2px;
+    font-weight: bolder;
+    padding-left: 10px;
+}

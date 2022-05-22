@@ -1,0 +1,90 @@
+.footerbg{
+    background: #121212;
+    color: white;
+    padding: 20px;
+}
+.footer{
+    display: grid;
+    grid-template-areas: "img quick company social";
+    justify-items: center;
+    padding: 20px 0;
+}
+.footer ul{
+    padding: 0;
+    list-style: none;
+}
+.footer a{
+    color: white;
+}
+.footer a:hover{
+    color: #c89d66;
+}
+.footer h6{
+    font-weight: bolder;
+    padding: 10px 0;
+    margin: 0;
+}
+.logo,.quicklink,.company,.social{
+    display: flex;
+    flex-direction: column;
+    grid-area: 1fr;
+}
+.logo{
+    width: 50px;
+    height: 25px;
+    grid-area: img;
+    align-self: center;
+    position: relative;
+}
+.logo{
+    width: 100px;
+    height: auto;
+}
+.quicklink{
+    grid-area: quick;
+}
+.company{
+    grid-area: company;
+}
+.social{
+    grid-area: social;
+}
+.social button{
+    background: #c89d66;
+    border: none;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.links{
+    font-size: 1.5rem;
+}
+.links a{
+    margin-right: 20px;
+}
+.copyright{
+    text-align: center;
+}
+@media screen and (max-width: 768px)  {
+    .footer{
+        grid-template-areas: "img quick company"
+                                "social social social";
+    }
+    .social{
+        display: flex;
+        align-items: center;
+    }
+    .social h6{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 576px)  {
+    .footer{
+        grid-template-areas: "img img"
+                            "quick company"
+                            "social social";
+    }
+    .footer input[type="text"]{
+        width: 175px;
+    }
+}
