@@ -8,17 +8,21 @@ const article = ({ article }) => {
     return (
         <section className={style.section}>
             <div className={style.containbox}>
-                <div className={style.sliderbox}>
+            <div className={style.sliderbox}>
+                <input type="range" id="scroll" name="scroll" className={style.slider}
+                    min="0" max="100" />
+                    </div>
+                    {/*
                     <div className={style.slider}>
                         <div className={style.inner + ' ' + "inner"}></div>
                         <div className={style.round + ' ' + "round"}></div>
                     </div>
-                </div>
-                <article className={style.article}>
-                    <img src={article.banner} alt="" />
-                    <h1>{article.title}</h1>
-                    <div dangerouslySetInnerHTML={{ __html: article.body }}></div>
-                </article>
+    </div>*/}
+                    <article className={style.article}>
+                        <img src={article.banner} alt="" />
+                        <h1>{article.title}</h1>
+                        <div dangerouslySetInnerHTML={{ __html: article.body }}></div>
+                    </article>
             </div>
             <style jsx>{`
         .inner{

@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5;
 }
 
 .nav {
@@ -49,6 +50,7 @@
 
 .open,.close {
     display: flex;
+    z-index: 5;
 }
 
 .open ul,.close ul {
