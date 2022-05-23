@@ -13,7 +13,7 @@ const Footer = () =>{
     return(
         
             <footer className={style.footerbg}>
-                <Container>
+            
             <div className={style.footer}>
                 <div className={style.logo}>
                     <Image fluid src={logo} alt="logo" />
@@ -55,7 +55,7 @@ const Footer = () =>{
             <div className={style.copyright}>
                 <h6>	© {year}  All rights reserved.</h6>
     </div>
-    </Container>
+    
         </footer>
         
         

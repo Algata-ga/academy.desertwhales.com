@@ -2,12 +2,19 @@
     background: #121212;
     color: white;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .footer{
+    width: min( 90rem , 90% );
+
     display: grid;
     grid-template-areas: "img quick company social";
     justify-items: center;
     padding: 20px 0;
+    width: min( 90rem , 90% );
 }
 .footer ul{
     padding: 0;
