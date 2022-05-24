@@ -3,8 +3,11 @@ import { useEffect } from "react";
 export const useCustomScroll = (scrollSliderRef) => {
     let scrolledByCustomSlider = false;
 
-    const handleWindowScroll = () => {
-        console.log(scrolledByCustomSlider, "please be true");
+    const handleWindowScroll = (e) => {
+        if (!e) return;
+        console.log("Window:");
+        console.log(e);
+        console.log("-------------------------------------------------------");
         if (scrolledByCustomSlider === true) return;
         scrolledByCustomSlider = false;
         console.log("dont happen");
@@ -19,22 +22,20 @@ export const useCustomScroll = (scrollSliderRef) => {
 
     const handleSliderScroll = (e) => {
         const scroll_percentage = e.target.value;
-        console.log(scrolledByCustomSlider, "please work");
         scrolledByCustomSlider = true;
         const scroll_y =
             (scroll_percentage / 100) *
             (document.documentElement.offsetHeight -
                 document.documentElement.clientHeight);
-
+        console.log("Slider: ");
         window.scroll(0, scroll_y);
     };
 
-    useEffect(
-        () => console.log("y wont u work", scrolledByCustomSlider),
-        [scrolledByCustomSlider]
-    );
+    const handleSliderMouseOut = () => {
+        scrolledByCustomSlider = false;
+    };
 
     useEffect(() => (window.onscroll = handleWindowScroll), []);
 
-    return handleSliderScroll;
+    return [handleSliderScroll, handleSliderMouseOut];
 };

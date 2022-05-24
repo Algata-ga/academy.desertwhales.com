@@ -4,7 +4,8 @@ import { useCustomScroll } from "./useCustomScroll";
 
 const article = ({ article }) => {
     const sliderRef = useRef();
-    const handleSliderScroll = useCustomScroll(sliderRef);
+    const [handleSliderScroll, handleSliderMouseOut] =
+        useCustomScroll(sliderRef);
 
     return (
         <section className={style.section}>
@@ -20,6 +21,7 @@ const article = ({ article }) => {
                         step="any"
                         onChange={handleSliderScroll}
                         ref={sliderRef}
+                        onMouseOut={handleSliderMouseOut}
                     />
                 </div>
                 <article className={style.article}>
