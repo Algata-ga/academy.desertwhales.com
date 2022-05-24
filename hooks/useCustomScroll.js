@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-const useCustomScroll = (scrollSliderRef) => {
-    const [scrolledByCustomSlider, setScrolledByCustomSlider] = useState(false);
+export const useCustomScroll = (scrollSliderRef) => {
+    let scrolledByCustomSlider = false;
 
-    useEffect(() => (window.onscroll = setSliderScroll), []);
-
-    const handleWindowScroll = () => {
+    const handleWindowScroll = (e) => {
+        if (!e) return;
         if (scrolledByCustomSlider === true) return;
-        scrolledByCustomSlider(false);
-
+        scrolledByCustomSlider = false;
         const scroll_percentage =
             (window.scrollY /
                 (document.documentElement.offsetHeight -
@@ -20,16 +18,19 @@ const useCustomScroll = (scrollSliderRef) => {
 
     const handleSliderScroll = (e) => {
         const scroll_percentage = e.target.value;
-        setScrolledByCustomSlider(true);
+        scrolledByCustomSlider = true;
         const scroll_y =
             (scroll_percentage / 100) *
             (document.documentElement.offsetHeight -
                 document.documentElement.clientHeight);
-
         window.scroll(0, scroll_y);
     };
 
-    return handleSliderScroll;
-};
+    const handleSliderMouseOut = () => {
+        scrolledByCustomSlider = false;
+    };
 
-export default useCustomScroll;
+    useEffect(() => (window.onscroll = handleWindowScroll), []);
+
+    return [handleSliderScroll, handleSliderMouseOut];
+};

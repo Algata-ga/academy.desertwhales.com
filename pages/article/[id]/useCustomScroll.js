@@ -5,12 +5,8 @@ export const useCustomScroll = (scrollSliderRef) => {
 
     const handleWindowScroll = (e) => {
         if (!e) return;
-        console.log("Window:");
-        console.log(e);
-        console.log("-------------------------------------------------------");
         if (scrolledByCustomSlider === true) return;
         scrolledByCustomSlider = false;
-        console.log("dont happen");
         const scroll_percentage =
             (window.scrollY /
                 (document.documentElement.offsetHeight -
@@ -27,7 +23,6 @@ export const useCustomScroll = (scrollSliderRef) => {
             (scroll_percentage / 100) *
             (document.documentElement.offsetHeight -
                 document.documentElement.clientHeight);
-        console.log("Slider: ");
         window.scroll(0, scroll_y);
     };
 
