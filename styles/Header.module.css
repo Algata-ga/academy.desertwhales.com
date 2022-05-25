@@ -1,7 +1,7 @@
 .header {
     height: 70px;
-    background: #121212;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,6 +39,8 @@
     border-radius: 10px;
     border: none;
     outline: none;
+    background: var(--search-bg);
+    color: var(--search-text);
 }
 
 .search input:focus {
@@ -73,7 +75,7 @@
     height: max-content;
     flex-direction: row;
     padding: 1rem 0;
-    background: #121214;
+    background: var(--bg);
     border-radius: 10px;
     overflow-y: auto;
     height: 300px;
@@ -92,7 +94,7 @@
     height: max-content;
     flex-direction: row;
     padding: 1rem 0;
-    background: #121214;
+    background: var(--bg);
     border-radius: 10px;
     overflow-y: auto;
     height: 300px;
@@ -170,7 +172,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: white;
+        background: var(--universal1);
         margin: 3px;
 
     }
@@ -216,8 +218,7 @@
         width: 90%;
         height: 70vh;
         border-radius: 15px;
-        border: 2px solid rgb(168, 35, 35);
-        background: rgba(11, 10, 10, 0.94);
+        background: var(--bg);
     }
 
     .open ul,.close ul {

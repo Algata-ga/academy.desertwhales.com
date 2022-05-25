@@ -1,3 +1,32 @@
+:root{
+  --universal1: #C89D65;
+
+  /*bright*/
+  --search-bg: #e1e0dd;
+  --search-text: #3b3b3b;
+  --bg: #f0ece7;
+  --cardtag: #575757;
+  --level-yellow: #c7b300;
+  --level-green: #34c700;
+  --level-red: #c70000;
+  --card-bg: #f6f6f6;
+  --text: #000000;
+
+
+  /*Dark*/
+  --dark-search-bg: #121111;
+  --dark-search-text: #616161;
+  --dark-bg: linear-gradient(264.27deg, #0E0D0D -41.22%, #050404 223.16%);
+  --dark-cardtag: #575757;
+  --dark-level-yellow: #c0b763;
+  --dark-level-green: #63c083;
+  --dark-level-red: #c06363;
+  --dark-card-bg: #070707;
+  --dark-card-stroke: #313131;
+  --dark-text: #FFFFFF;
+
+}
+
 html,
 body {
   padding: 0;
