@@ -30,7 +30,10 @@ export const useCustomScroll = (scrollSliderRef) => {
         scrolledByCustomSlider = false;
     };
 
-    useEffect(() => (window.onscroll = handleWindowScroll), []);
+    useEffect(() => {
+        window.onscroll = handleWindowScroll;
+        scrollSliderRef.current.value = 0;
+    }, []);
 
     return [handleSliderScroll, handleSliderMouseOut];
 };
