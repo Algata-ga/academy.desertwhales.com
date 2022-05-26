@@ -1,4 +1,4 @@
-html {
+jzml {
     --search-bg: #e1e0dd;
     --search-text: #3b3b3b;
     --bg: #f0ece7;
@@ -21,6 +21,14 @@ html[data-theme="dark"] {
     --card-bg: #070707;
     --card-stroke: #313131;
     --text: #ffffff;
+}
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
 }
 
 html,

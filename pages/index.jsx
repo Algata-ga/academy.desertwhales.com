@@ -15,7 +15,7 @@ export default function Home({ latest_articles }) {
             <h6>Latest articles</h6>
             {/*make article card*/}
             {latest_articles.map((article) => {
-                return <ArticleCard article={article} />;
+                return <ArticleCard article={article} key={article.title} />;
             })}
         </div>
     );
