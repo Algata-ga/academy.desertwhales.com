@@ -3,9 +3,9 @@ html {
     --search-text: #3b3b3b;
     --bg: #f0ece7;
     --cardtag: #575757;
-    --level-yellow: #c7b300;
-    --level-green: #34c700;
-    --level-red: #c70000;
+    --level-beginner: #c7b300;
+    --level-intermediate: #34c700;
+    --level-advanced: #c70000;
     --card-bg: #f6f6f6;
     --text: #000000;
 }
@@ -15,9 +15,9 @@ html[data-theme="dark"] {
     --search-text: #616161;
     --bg: linear-gradient(264.27deg, #0e0d0d -41.22%, #050404 223.16%);
     --cardtag: #575757;
-    --level-yellow: #c0b763;
-    --level-green: #63c083;
-    --level-red: #c06363;
+    --level-beginner: #c0b763;
+    --level-intermediate: #63c083;
+    --level-advanced: #c06363;
     --card-bg: #070707;
     --card-stroke: #313131;
     --text: #ffffff;
@@ -32,6 +32,7 @@ body {
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     scroll-behavior: smooth;
     --universal1: #c89d65;
+    background-color: var(--bg);
 }
 
 a {

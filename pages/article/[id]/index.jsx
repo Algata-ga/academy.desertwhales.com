@@ -37,6 +37,10 @@ const article = ({ article }) => {
 };
 
 export const getServerSideProps = async (context) => {
+    context.res.setHeader(
+        "Cache-Control",
+        "public, s-maxage=1000, stale-while-revalidate=1000"
+    );
     const article = {
         banner: "https://picsum.photos/500/300",
         title: "Lorem Ipsum Dolor LoL",
