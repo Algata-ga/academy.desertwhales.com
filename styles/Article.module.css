@@ -28,29 +28,35 @@
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #000;
+    border-radius: 50%;
+    background: var(--text);
     cursor: pointer;
+  }
+
+  .slider::-ms-range-thumb{
+      background: red;
   }
   
   .slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #000;
+    background: var(--text);
     cursor: pointer;
   }
   .slider::-moz-range-progress {
     background-color: #000; 
 }
 .slider::-moz-range-track {  
-    background-color: #c4c4c4;
+    background-color: white;
 }
 .slider::-ms-fill-lower {
     background-color: #000; 
 }
 .slider::-ms-fill-upper {  
-    background-color: #c4c4c4;
+    background-color: white;
 }
+
 
 .sliderbox{
     width: 100%;
@@ -93,6 +99,7 @@
     display: flex;
     flex-direction: column;
     padding: 2rem 0;
+    color: var(--text);
 }
 .article img{
     width: min(100%,50rem);

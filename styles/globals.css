@@ -1,12 +1,14 @@
-jzml {
+html {
     --search-bg: #e1e0dd;
     --search-text: #3b3b3b;
     --bg: #f0ece7;
     --cardtag: #575757;
-    --level-beginner: #c7b300;
-    --level-intermediate: #34c700;
-    --level-advanced: #c70000;
     --card-bg: #f6f6f6;
+    --card-stroke:  0px 4px 10px rgba(0, 0, 0, 0.25);
+    --card-border: #f6f6f6;
+    --level-beginner: #34c700;
+    --level-intermediate: #c7b300;
+    --level-advanced: #c70000;
     --text: #000000;
 }
 
@@ -15,11 +17,12 @@ html[data-theme="dark"] {
     --search-text: #616161;
     --bg: linear-gradient(264.27deg, #0e0d0d -41.22%, #050404 223.16%);
     --cardtag: #575757;
-    --level-beginner: #c0b763;
-    --level-intermediate: #63c083;
-    --level-advanced: #c06363;
     --card-bg: #070707;
+    --card-border: #f0ece7;
     --card-stroke: #313131;
+    --level-beginner: #63c083;
+    --level-intermediate: #c0b763;
+    --level-advanced: #c06363;
     --text: #ffffff;
 }
 

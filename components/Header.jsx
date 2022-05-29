@@ -20,7 +20,6 @@ const Header = () => {
     const [theme, setTheme] = useState(0);
 
     useEffect(() => {
-        console.log("fuck me");
         setGlobalTheme(theme);
     }, [theme]);
 
