@@ -1,5 +1,7 @@
 import Head from "next/head";
+import { Container } from "react-bootstrap";
 import ArticleCard from "../components/ArticleCard";
+import style from "../styles/Index.module.css"
 
 export default function Home({ latest_articles }) {
     return (
@@ -12,11 +14,20 @@ export default function Home({ latest_articles }) {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h6>Latest articles</h6>
-            {/*make article card*/}
-            {latest_articles.map((article) => {
-                return <ArticleCard article={article} key={article.title} />;
-            })}
+
+            <div className={style.article}>
+                
+                <div className={style.articlecontain}>
+                    <h6>Latest articles</h6>
+                    {/*make article card*/}
+                    <div className={style.articlebox}>
+                    {latest_articles.map((article) => {
+                        return <ArticleCard article={article} key={article.title} />;
+                    })}
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 }
@@ -32,7 +43,7 @@ export const getServerSideProps = async (context) => {
             title: "Lorem Ipsum Dolor LoL",
             body: '<p>Lorem ipsum dolor sit amet, consectetur</p>\n\n<blockquote> \n <p>Lorem ipsum dolor sit amet, consectetur</p>\n</blockquote>\n\n<p><a href="https://loremipsum.io/">see source</a></p>\n\n<p> <u>Lorem ipsum dolor sit amet</u>, consectetur adipiscing elit, sed do eiusmod tempor incididuntEtiam sit amet nisl purus in. Neque laoreet suspendisse interdum consectetur libero id.<em> Proin fermentum leo vel orci porta non. </em >Nec feugiat nisl pretium fusce. Molestie nunc non blandit massa enim. Pellentesque nec nam aliquam sem et tortor consequat. Consequat ac felis donec et. Sed augue lacus viverra vitae congue eu consequat ac. Condimentum id venenatis a condimentum vitae sapien pellentesque. Faucibus nisl tincidunt eget <strong>nullam</strong>. Posuere urna nec tincidunt praesent semper. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Sed faucibus turpis in eu mi. Ac odio tempor orci dapibus ultrices in iaculis nunc. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed. Ut pharetra sit amet aliquam id diam.</p>\n\n<p> </p>\n\n<p> <img alt="sdada" data-entity-type="file" data-entity-uuid="ca5c3e36-a700-456f-9b84-1ae780dad808" src="https://dwadmin.preview.algata.in/sites/default/files/inline-images/2022-05-18T22%3A42%3A31%2C838081690%2B05%3A30.png" width="670" height="315" loading="lazy"/></p>\n\n<p> </p>\n\n<ul> \n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n</ul>\n\n<p>Lorem ipsum dolor</p>\n\n<ol> \n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n</ol>\n\n<p> <img alt="asdasd" data-entity-type="file" data-entity-uuid="a4e7c3c1-150a-4d59-b645-56ea687a9ecf" src="https://dwadmin.preview.algata.in/sites/default/files/inline-images/2022-05-18T22%3A41%3A19%2C079438744%2B05%3A30.png" width="500" height="254" loading="lazy"/></p>\n\n<p> </p>\n\n<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntEtiam sit amet nisl purus in. Neque laoreet suspendisse interdum consectetur libero id. Proin fermentum leo vel orci porta non. Nec feugiat nisl pretium fusce. Molestie nunc non blandit massa enim. Pellentesque nec nam aliquam sem et tortor consequat. Consequat ac felis donec et. Sed augue lacus viverra vitae congue eu consequat ac. Condimentum id venenatis a condimentum vitae sapien pellentesque. Faucibus nisl tincidunt eget nullam. Posuere urna nec tincidunt praesent semper. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Sed faucibus turpis in eu mi. Ac odio tempor orci dapibus ultrices in iaculis nunc. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed. Ut pharetra sit amet aliquam id diam.</p>',
             tags: ["Crytpocurreny", "Ethereum", "Desertwhales"],
-            level: "Beginner",
+            level: "Intermediate",
         },
 
         {
@@ -47,7 +58,7 @@ export const getServerSideProps = async (context) => {
             title: "Lorem Ipsum Dolor LoL",
             body: '<p>Lorem ipsum dolor sit amet, consectetur</p>\n\n<blockquote> \n <p>Lorem ipsum dolor sit amet, consectetur</p>\n</blockquote>\n\n<p><a href="https://loremipsum.io/">see source</a></p>\n\n<p> <u>Lorem ipsum dolor sit amet</u>, consectetur adipiscing elit, sed do eiusmod tempor incididuntEtiam sit amet nisl purus in. Neque laoreet suspendisse interdum consectetur libero id.<em> Proin fermentum leo vel orci porta non. </em >Nec feugiat nisl pretium fusce. Molestie nunc non blandit massa enim. Pellentesque nec nam aliquam sem et tortor consequat. Consequat ac felis donec et. Sed augue lacus viverra vitae congue eu consequat ac. Condimentum id venenatis a condimentum vitae sapien pellentesque. Faucibus nisl tincidunt eget <strong>nullam</strong>. Posuere urna nec tincidunt praesent semper. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Sed faucibus turpis in eu mi. Ac odio tempor orci dapibus ultrices in iaculis nunc. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed. Ut pharetra sit amet aliquam id diam.</p>\n\n<p> </p>\n\n<p> <img alt="sdada" data-entity-type="file" data-entity-uuid="ca5c3e36-a700-456f-9b84-1ae780dad808" src="https://dwadmin.preview.algata.in/sites/default/files/inline-images/2022-05-18T22%3A42%3A31%2C838081690%2B05%3A30.png" width="670" height="315" loading="lazy"/></p>\n\n<p> </p>\n\n<ul> \n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n</ul>\n\n<p>Lorem ipsum dolor</p>\n\n<ol> \n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n\t <li>Lorem ipsum dolor sit amet, consectetur</li>\n</ol>\n\n<p> <img alt="asdasd" data-entity-type="file" data-entity-uuid="a4e7c3c1-150a-4d59-b645-56ea687a9ecf" src="https://dwadmin.preview.algata.in/sites/default/files/inline-images/2022-05-18T22%3A41%3A19%2C079438744%2B05%3A30.png" width="500" height="254" loading="lazy"/></p>\n\n<p> </p>\n\n<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntEtiam sit amet nisl purus in. Neque laoreet suspendisse interdum consectetur libero id. Proin fermentum leo vel orci porta non. Nec feugiat nisl pretium fusce. Molestie nunc non blandit massa enim. Pellentesque nec nam aliquam sem et tortor consequat. Consequat ac felis donec et. Sed augue lacus viverra vitae congue eu consequat ac. Condimentum id venenatis a condimentum vitae sapien pellentesque. Faucibus nisl tincidunt eget nullam. Posuere urna nec tincidunt praesent semper. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Sed faucibus turpis in eu mi. Ac odio tempor orci dapibus ultrices in iaculis nunc. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed. Ut pharetra sit amet aliquam id diam.</p>',
             tags: ["Crytpocurreny", "Ethereum", "Desertwhales"],
-            level: "Beginner",
+            level: "Advanced",
         },
         {
             banner: "https://picsum.photos/500/300",

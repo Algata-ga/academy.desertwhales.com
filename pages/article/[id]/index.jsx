@@ -18,6 +18,7 @@ const article = ({ article }) => {
                         className={style.slider}
                         min="0"
                         max="100"
+                        value="0"
                         step="any"
                         onChange={handleSliderScroll}
                         ref={sliderRef}
