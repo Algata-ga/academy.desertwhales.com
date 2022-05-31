@@ -16,6 +16,31 @@ const setGlobalTheme = (theme_id) => {
     localStorage.setItem("theme_id", theme_id);
 };
 
+// getInitialProps for this
+const tags = [
+    { name: "Altcoin" },
+    { name: "Binance" },
+    { name: "Bitcoin" },
+    { name: "Blockchain" },
+    { name: "Consensus" },
+    { name: "Cryptocurrency" },
+    { name: "Cryptography" },
+    { name: "DeFu" },
+    { name: "Economics" },
+    { name: "Essentials" },
+    { name: "Ethereum" },
+    { name: "History" },
+    { name: "Metaverse" },
+    { name: "Mining" },
+    { name: "NFT" },
+    { name: "Privacy" },
+    { name: "Security" },
+    { name: "Technology" },
+    { name: "Trading" },
+    { name: "Staking" },
+    { name: "Tutorials" },
+    { name: "Desertwhales" },
+];
 const Header = () => {
     const [theme, setTheme] = useState(0);
 
@@ -61,39 +86,9 @@ const Header = () => {
                             Topics
                         </li>
                         <ul className={sub ? style.subclose : style.subopen}>
-                            <li>rewrwer</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>werwer</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>rewrwer</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>werwer</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>rewrwer</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>werwer</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
-                            <li>crypto</li>
+                            {tags.map((x) => (
+                                <li>{x.name}</li>
+                            ))}
                         </ul>
                         <li
                             className={style.change}
@@ -127,4 +122,3 @@ const Header = () => {
 };
 
 export default Header;
-
