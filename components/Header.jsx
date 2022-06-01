@@ -3,6 +3,7 @@ import Image from "next/image";
 import style from "../styles/Header.module.css";
 import { useState, useEffect } from "react";
 import { BsFillSunFill, BsFillCloudMoonFill } from "react-icons/bs";
+import tag_color from "../utils/tag_color";
 
 const setGlobalTheme = (theme_id) => {
     if (window === undefined) return;
@@ -90,7 +91,12 @@ const Header = () => {
                         </li>
                         <ul className={sub ? style.subclose : style.subopen}>
                             {tags.map((x) => (
-                                <li key={x}>{x.name}</li>
+                                <li
+                                    key={x}
+                                    style={{ color: tag_color(x.name) }}
+                                >
+                                    {x.name}
+                                </li>
                             ))}
                         </ul>
                         <li
