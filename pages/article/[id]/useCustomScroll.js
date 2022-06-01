@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const useCustomScroll = (scrollSliderRef) => {
+const useCustomScroll = (scrollSliderRef) => {
     let scrolledByCustomSlider = false;
 
     const handleWindowScroll = (e) => {
@@ -17,6 +17,7 @@ export const useCustomScroll = (scrollSliderRef) => {
     };
 
     const handleSliderScroll = (e) => {
+        console.log("hello");
         const scroll_percentage = e.target.value;
         scrolledByCustomSlider = true;
         const scroll_y =
@@ -33,7 +34,14 @@ export const useCustomScroll = (scrollSliderRef) => {
     useEffect(() => {
         window.onscroll = handleWindowScroll;
         scrollSliderRef.current.value = 0;
+        //scrollSliderRef.current.addEventListener("change", handleSliderScroll);
+        //scrollSliderRef.current.addEventListener(
+        //"mouseout",
+        //handleSliderMouseOut
+        //);
     }, []);
 
     return [handleSliderScroll, handleSliderMouseOut];
 };
+
+export default useCustomScroll;

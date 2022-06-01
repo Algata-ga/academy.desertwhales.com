@@ -50,7 +50,10 @@ const Header = () => {
 
     const [sub, setSub] = useState(true);
     const [nav, setNav] = useState(true);
-    const themes = [<BsFillSunFill />, <BsFillCloudMoonFill />];
+    const themes = [
+        <BsFillSunFill key={"sun"} />,
+        <BsFillCloudMoonFill key={"cloud"} />,
+    ];
     return (
         <header className={style.header}>
             <nav className={style.nav}>
@@ -87,7 +90,7 @@ const Header = () => {
                         </li>
                         <ul className={sub ? style.subclose : style.subopen}>
                             {tags.map((x) => (
-                                <li>{x.name}</li>
+                                <li key={x}>{x.name}</li>
                             ))}
                         </ul>
                         <li

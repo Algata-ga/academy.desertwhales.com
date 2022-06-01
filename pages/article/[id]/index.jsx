@@ -1,8 +1,8 @@
 import style from "../../../styles/Article.module.css";
 import { useRef } from "react";
-import { useCustomScroll } from "./useCustomScroll";
+import useCustomScroll from "./useCustomScroll";
 
-const article = ({ article }) => {
+const Article = ({ article }) => {
     const sliderRef = useRef();
     const [handleSliderScroll, handleSliderMouseOut] =
         useCustomScroll(sliderRef);
@@ -19,8 +19,8 @@ const article = ({ article }) => {
                         min="0"
                         max="100"
                         step="any"
-                        onChange={handleSliderScroll}
                         ref={sliderRef}
+                        onChange={handleSliderScroll}
                         onMouseOut={handleSliderMouseOut}
                     />
                 </div>
@@ -52,4 +52,4 @@ export const getServerSideProps = async (context) => {
     };
 };
 
-export default article;
+export default Article;
