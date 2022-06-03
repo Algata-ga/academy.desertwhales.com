@@ -1,6 +1,6 @@
 import style from "../../../styles/Article.module.css";
 import { useRef } from "react";
-import useCustomScroll from "./useCustomScroll";
+import useCustomScroll from "../../../hooks/useCustomScroll";
 
 const Article = ({ article }) => {
     const sliderRef = useRef();
