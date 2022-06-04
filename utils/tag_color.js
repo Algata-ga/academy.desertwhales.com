@@ -7,12 +7,18 @@ const color_set = [
     "#C0B763",
 ];
 
-const tag_color = (tag) => {
-    let chars_sum = 0;
-    for (let i = 0; i < tag.length; i++) {
-        chars_sum += tag.charAt(i).charCodeAt(0) - "a".charCodeAt(0) + 1;
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0, len = str.length; i < len; i++) {
+        let chr = str.charCodeAt(i);
+        hash = (hash << 5) - hash + chr;
+        hash |= 0; // Convert to 32bit integer
     }
-    const color_index = chars_sum % color_set.length;
+    return hash;
+}
+
+const tag_color = (tag) => {
+    const color_index = hashCode(tag) % color_set.length;
     return color_set[color_index];
 };
 
