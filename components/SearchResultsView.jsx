@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ArticleCard from "./ArticleCard";
+import style from "../styles/Search.module.css"
 
 const SearchResultsView = ({ data }) => {
     const [isListView, setListView] = useState(false);
@@ -9,11 +10,14 @@ const SearchResultsView = ({ data }) => {
             <button onClick={() => setListView(() => !isListView)}>
                 {isListView ? "Card" : "List"}
             </button>
-            {data.length == 0 ? (
-                <h2>Not articles found</h2>
-            ) : (
-                data.map((x) => <ArticleCard article={x} key={x.title} />)
-            )}
+            <div className={style.searchboxlist}>
+                {data.length == 0 ? (
+                    <h2>Not articles found</h2>
+                ) : (
+                    data.map((x) => <ArticleCard article={x} key={x.title} />)
+                )}
+            </div>
+
         </div>
     );
 };

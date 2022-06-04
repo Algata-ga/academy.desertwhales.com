@@ -5,9 +5,12 @@ const ArticleCard = ({ article }) => {
     const { title, banner, tags, body, level } = { ...article };
     console.log(article);
     return (
-        <div className={style.card}>
+        <div className={style.cardlist}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>
-                <img src={banner} height="250px" width="250px" />
+                <div className={style.imgbox}>
+                    <img src={banner}/>
+                </div>
+                <div className={style.content}>
                 <h4>{title}</h4>
                 <br />
                 <h5 style={{ color: `var(--level-${level.toLowerCase()})` }}>
@@ -26,6 +29,7 @@ const ArticleCard = ({ article }) => {
                         </span>
                     ))}
                 </p>
+                </div>
             </a>
         </div>
     );

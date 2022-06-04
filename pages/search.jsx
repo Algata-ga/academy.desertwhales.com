@@ -1,6 +1,7 @@
 import SearchResultsView from "../components/SearchResultsView";
 import tag_color from "../utils/tag_color";
 import useSearch from "../hooks/useSearch";
+import style from "../styles/Search.module.css";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -20,44 +21,50 @@ const Search = ({ tags, initialData }) => {
     };
 
     return (
-        <>
-            <fieldset>
-                <form onChange={handleSearch} ref={filterFormRef}>
-                    <h2>Tags</h2>
-                    {tags.map((x) => (
-                        <>
-                            <label htmlFor={x} style={{ color: tag_color(x) }}>
-                                {x}
-                            </label>
-                            <input value={x} name="tags" type="checkbox" />
-                        </>
-                    ))}
-                    <h2>Level</h2>
-                    {["BEGINNER", "INTERMEDIATE", "ADVANCED"].map((x) => (
-                        <span
-                            key={x}
-                            style={{
-                                color: `var(--level-${x.toLowerCase()})`,
-                            }}
-                        >
-                            <label htmlFor={x.toLowerCase}>{x}</label>
-                            <input
-                                name="level"
-                                value={x.toLowerCase()}
-                                type="radio"
-                            />
-                        </span>
-                    ))}
-                    <h2>Reading Time</h2>
-                    <input type="range" name="reading_time" />
-                </form>
-            </fieldset>
-            {isLoading || results.length === 0 ? (
-                <h2>Loading</h2>
-            ) : (
-                <SearchResultsView data={results} />
-            )}
-        </>
+        
+        <div className={style.search}>
+            <div className={style.searchcontain}>
+                <fieldset>
+                    <form className={style.form} onChange={handleSearch} ref={filterFormRef}>
+                        <h2>Tags</h2>
+                        {tags.map((x) => (
+                            <>
+                                <label className={style.tag} htmlFor={x} style={{ color: tag_color(x) }} >
+                                    {x}
+                                    <input value={x} name="tags" type="checkbox" />
+                                </label>
+                                
+                                
+                            </>
+                        ))}
+
+                        <h2>Level</h2>
+                        {["BEGINNER", "INTERMEDIATE", "ADVANCED"].map((x) => (
+                            <span
+                                key={x}
+                                style={{
+                                    color: `var(--level-${x.toLowerCase()})`,
+                                }}
+                            >
+                                <label htmlFor={x.toLowerCase}>{x}</label>
+                                <input
+                                    name="level"
+                                    value={x.toLowerCase()}
+                                    type="radio"
+                                />
+                            </span>
+                        ))}
+                        <h2>Reading Time</h2>
+                        <input type="range" name="reading_time" />
+                    </form>
+                </fieldset>
+                {isLoading || results.length === 0 ? (
+                    <h2>Loading</h2>
+                ) : (
+                    <SearchResultsView data={results} />
+                )}
+            </div>
+        </div>
     );
 };
 

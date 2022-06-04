@@ -32,7 +32,9 @@ const Article = ({ article }) => {
                         />
                     </div>
                     <article className={style.article}>
-                        <img src={article.banner} alt="" />
+                        <div className={style.imgbox}>
+                            <img src={article.banner} alt="" />
+                        </div>
                         <h1>{article.title}</h1>
                         <div
                             dangerouslySetInnerHTML={{ __html: article.body }}

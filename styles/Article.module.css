@@ -1,5 +1,6 @@
 .section{
     width: 100%;
+    min-height: 65.85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,7 +8,8 @@
     background: var(--bg);
 }
 .containbox{
-    width: min(89%,50rem);
+    width: min(95%,752px);
+    padding: 24px 16px;
 }
 .slider {
     -webkit-appearance: none;
@@ -101,8 +103,14 @@
     padding: 2rem 0;
     color: var(--text);
 }
+.article .imgbox{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
 .article img{
-    width: min(100%,50rem);
+    width: 100%;
     height: auto;
     align-self: center;
 }
