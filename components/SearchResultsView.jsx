@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ArticleCard from "./ArticleCard";
-import style from "../styles/Search.module.css"
+import style from "../styles/Search.module.css";
 
 const SearchResultsView = ({ data }) => {
     const [isListView, setListView] = useState(false);
@@ -14,10 +14,15 @@ const SearchResultsView = ({ data }) => {
                 {data.length == 0 ? (
                     <h2>Not articles found</h2>
                 ) : (
-                    data.map((x) => <ArticleCard article={x} key={x.title} />)
+                    data.map((x) => (
+                        <ArticleCard
+                            article={x}
+                            key={x.title}
+                            list={isListView}
+                        />
+                    ))
                 )}
             </div>
-
         </div>
     );
 };

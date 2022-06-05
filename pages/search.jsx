@@ -3,58 +3,92 @@ import MultiSelectionButtons from "../components/MultiSelectionButtons";
 import useSearch from "../hooks/useSearch";
 import style from "../styles/Search.module.css";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useReducer } from "react";
 
 const Search = ({ tags, initialData }) => {
-    const [results, setResults] = useState(initialData);
-    const [params, setParams] = useState({});
-    const filterFormRef = useRef();
-
-    const { data, isLoading, isError } = useSearch(params);
-
-    useEffect(() => console.log("hi") && console.log(data), [data]);
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-        const data = new FormData(filterFormRef.current);
-        const value = Object.fromEntries(data.entries());
-        console.log(value);
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case "level":
+                return { ...state, level: action.value };
+            case "tags":
+                if (state.tags.includes(action.value)) {
+                    const updatedTags = state.tags.filter(
+                        (x) => x !== action.value
+                    );
+                    return { ...state, tags: updatedTags };
+                } else {
+                    return { ...state, tags: [...state.tags, action.value] };
+                }
+            case "reading_time":
+                return { ...state, reading_time: action.value };
+            case "reset":
+                return { tags: [], level: null, reading_time: 0 };
+        }
     };
+
+    const [filterParams, dispatch] = useReducer(reducer, {
+        tags: [],
+        level: null,
+        reading_time: 0,
+    });
+
+    useEffect(() => console.log(filterParams), [filterParams]);
+
+    const [results, setResults] = useState(initialData);
+
+    const { data, isLoading, isError } = useSearch(filterParams);
 
     return (
         <div className={style.search}>
             <div className={style.searchcontain}>
-                <fieldset>
-                    <form
-                        className={style.form}
-                        onChange={handleSearch}
-                        ref={filterFormRef}
-                    >
-                        <h2>Tags</h2>
-                        <MultiSelectionButtons
-                            list={tags}
-                            setCurrentSelection={() => {}}
-                        />
-                        <h2>Level</h2>
-                        {["BEGINNER", "INTERMEDIATE", "ADVANCED"].map((x) => (
-                            <span
-                                key={x}
-                                style={{
-                                    color: `var(--level-${x.toLowerCase()})`,
+                <div className={style.form}>
+                    <h2>Tags</h2>
+                    <MultiSelectionButtons
+                        list={tags}
+                        toggleStates={filterParams.tags}
+                        setCurrentSelection={(x) =>
+                            dispatch({ type: "tags", value: x })
+                        }
+                    />
+                    <h2>Level</h2>
+                    {["BEGINNER", "INTERMEDIATE", "ADVANCED"].map((x) => (
+                        <span
+                            key={x}
+                            style={{
+                                color: `var(--level-${x.toLowerCase()})`,
+                            }}
+                        >
+                            <label htmlFor={x.toLowerCase}>{x}</label>
+                            <input
+                                name="level"
+                                value={x.toLowerCase()}
+                                type="radio"
+                                onChange={(e) => {
+                                    e.preventDefault();
+                                    dispatch({
+                                        type: "level",
+                                        value: x.toLowerCase(),
+                                    });
                                 }}
-                            >
-                                <label htmlFor={x.toLowerCase}>{x}</label>
-                                <input
-                                    name="level"
-                                    value={x.toLowerCase()}
-                                    type="radio"
-                                />
-                            </span>
-                        ))}
-                        <h2>Reading Time</h2>
-                        <input type="range" name="reading_time" />
-                    </form>
-                </fieldset>
+                            />
+                        </span>
+                    ))}
+                    <h2>Reading Time</h2>
+                    <input
+                        type="range"
+                        name="reading_time"
+                        onChange={(e) => {
+                            e.preventDefault();
+                            dispatch({
+                                type: "reading_time",
+                                value: e.currentTarget.value,
+                            });
+                        }}
+                    />
+                    <button onClick={() => dispatch({ type: "reset" })}>
+                        Reset
+                    </button>
+                </div>
                 {isLoading || results.length === 0 ? (
                     <h2>Loading</h2>
                 ) : (

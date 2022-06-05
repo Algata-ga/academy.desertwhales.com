@@ -3,7 +3,6 @@ import style from "../styles/ArticleCard.module.css";
 
 const ArticleCard = ({ article, list }) => {
     const { title, banner, tags, body, level } = { ...article };
-    console.log(article);
     return (
         <div className={list === true ? style.cardlist : style.card}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>
