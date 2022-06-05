@@ -13,8 +13,6 @@ const handler = async (req, res) => {
             read_time: read_time,
         };
     });
-    console.log("fuck");
-    console.log(latest_articles);
     return res.status(200).json(latest_articles);
 };
 

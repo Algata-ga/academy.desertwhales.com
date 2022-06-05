@@ -8,7 +8,18 @@ const handler = async (req, res) => {
         `${process.env.BACKEND_API_URL}/search?_format=json${params}`
     );
     const data = await response.json();
-    return res.status(200).json(data);
+    const results = data.map((x) => {
+        const { title, banner, level, tags, read_time } = x;
+        return {
+            title: title,
+            banner: process.env.BACKEND_API_URL.replace("/api", "") + banner,
+            level: level,
+            tags: tags.split(","),
+            read_time: read_time,
+        };
+    });
+
+    return res.status(200).json(results);
 };
 
 export default handler;

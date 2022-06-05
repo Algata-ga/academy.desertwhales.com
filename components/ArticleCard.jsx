@@ -2,7 +2,8 @@ import tag_color from "../utils/tag_color";
 import style from "../styles/ArticleCard.module.css";
 
 const ArticleCard = ({ article, list }) => {
-    const { title, banner, tags, body, level, read_time } = { ...article };
+    const { title, banner, tags, level, read_time } = { ...article };
+    console.log(article);
     return (
         <div className={list === true ? style.cardlist : style.card}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>

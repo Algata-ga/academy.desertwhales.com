@@ -3,11 +3,8 @@ import useSWR from "swr";
 
 const useSearch = (query) => {
     const fetcher = (...args) => fetch(...args).then((res) => res.json());
-    const params = Object.keys(query).reduce(
-        (prev, x) => prev + `&${x}=${query[x]}`,
-        ""
-    );
-    const { data, error } = useSWR(`/api/search?${params}`, fetcher);
+
+    const { data, error } = useSWR(`/api/search?${query}`, fetcher);
     return {
         data: data,
         isLoading: !data && !error,

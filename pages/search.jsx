@@ -3,9 +3,9 @@ import MultiSelectionButtons from "../components/MultiSelectionButtons";
 import useSearch from "../hooks/useSearch";
 import style from "../styles/Search.module.css";
 
-import { useState, useEffect, useRef, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
-const Search = ({ tags, initialData }) => {
+const Search = ({ tags, difficulty, initialData }) => {
     const reducer = (state, action) => {
         switch (action.type) {
             case "level":
@@ -32,11 +32,28 @@ const Search = ({ tags, initialData }) => {
         reading_time: 0,
     });
 
-    useEffect(() => console.log(filterParams), [filterParams]);
+    const query_generator = (params) => {
+        const tags_string =
+            params.tags.length !== 0
+                ? params.tags.reduce((prev, x) => prev + `&tags[]=${x}`, "")
+                : "";
+        const level_string =
+            params.level !== null ? `&difficulty[]=${params.level}` : "";
+        const reading_time_string =
+            params.reading_time !== 0
+                ? `&reading_time=${params.reading_time}`
+                : "";
 
-    const [results, setResults] = useState(initialData);
+        return tags_string + level_string + reading_time_string;
+    };
 
-    const { data, isLoading, isError } = useSearch(filterParams);
+    const { data, isLoading, isError } = useSearch(
+        query_generator(filterParams)
+    );
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     return (
         <div className={style.search}>
@@ -51,23 +68,26 @@ const Search = ({ tags, initialData }) => {
                         }
                     />
                     <h2>Level</h2>
-                    {["BEGINNER", "INTERMEDIATE", "ADVANCED"].map((x) => (
+                    {difficulty.map((x) => (
                         <span
-                            key={x}
+                            key={x.name}
                             style={{
-                                color: `var(--level-${x.toLowerCase()})`,
+                                color: `var(--level-${x.name.toLowerCase()})`,
                             }}
                         >
-                            <label htmlFor={x.toLowerCase}>{x}</label>
+                            <label htmlFor={x.name.toLowerCase()}>
+                                {x.name}
+                            </label>
+
                             <input
                                 name="level"
-                                value={x.toLowerCase()}
+                                value={x.name.toLowerCase()}
                                 type="radio"
                                 onChange={(e) => {
                                     e.preventDefault();
                                     dispatch({
                                         type: "level",
-                                        value: x.toLowerCase(),
+                                        value: x.id,
                                     });
                                 }}
                             />
@@ -89,10 +109,10 @@ const Search = ({ tags, initialData }) => {
                         Reset
                     </button>
                 </div>
-                {isLoading || results.length === 0 ? (
+                {isLoading || data.length === 0 ? (
                     <h2>Loading</h2>
                 ) : (
-                    <SearchResultsView data={results} />
+                    <SearchResultsView data={data} />
                 )}
             </div>
         </div>
@@ -110,10 +130,15 @@ export const getServerSideProps = async ({ req, res }) => {
     );
     const latest_articles = await articles_response.json();
 
-    const response = await fetch(process.env.BASE_URL + "/api/tags");
-    const tags = await response.json();
+    const tags_response = await fetch(process.env.BASE_URL + "/api/tags");
+    const tags = await tags_response.json();
 
-    return { props: { tags, initialData: latest_articles } };
+    const difficulty_response = await fetch(
+        process.env.BASE_URL + "/api/difficulty"
+    );
+    const difficulty = await difficulty_response.json();
+
+    return { props: { tags, difficulty, initialData: latest_articles } };
 };
 
 export default Search;
