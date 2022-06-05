@@ -1,5 +1,5 @@
 import SearchResultsView from "../components/SearchResultsView";
-import tag_color from "../utils/tag_color";
+import MultiSelectionButtons from "../components/MultiSelectionButtons";
 import useSearch from "../hooks/useSearch";
 import style from "../styles/Search.module.css";
 
@@ -14,30 +14,27 @@ const Search = ({ tags, initialData }) => {
 
     useEffect(() => console.log("hi") && console.log(data), [data]);
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault();
         const data = new FormData(filterFormRef.current);
         const value = Object.fromEntries(data.entries());
         console.log(value);
     };
 
     return (
-        
         <div className={style.search}>
             <div className={style.searchcontain}>
                 <fieldset>
-                    <form className={style.form} onChange={handleSearch} ref={filterFormRef}>
+                    <form
+                        className={style.form}
+                        onChange={handleSearch}
+                        ref={filterFormRef}
+                    >
                         <h2>Tags</h2>
-                        {tags.map((x) => (
-                            <>
-                                <label className={style.tag} htmlFor={x} style={{ color: tag_color(x) }} >
-                                    {x}
-                                    <input value={x} name="tags" type="checkbox" />
-                                </label>
-                                
-                                
-                            </>
-                        ))}
-
+                        <MultiSelectionButtons
+                            list={tags}
+                            setCurrentSelection={() => {}}
+                        />
                         <h2>Level</h2>
                         {["BEGINNER", "INTERMEDIATE", "ADVANCED"].map((x) => (
                             <span
