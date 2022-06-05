@@ -4,12 +4,13 @@ const handler = async (req, res) => {
     );
     const data = await response.json();
     const latest_articles = data.map((x) => {
-        const { title, banner, level, tags } = x;
+        const { title, banner, level, tags, read_time } = x;
         return {
             title: title,
             banner: process.env.BACKEND_API_URL.replace("/api", "") + banner,
             level: level,
             tags: tags.split(","),
+            read_time: read_time,
         };
     });
     console.log("fuck");

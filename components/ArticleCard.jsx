@@ -2,7 +2,7 @@ import tag_color from "../utils/tag_color";
 import style from "../styles/ArticleCard.module.css";
 
 const ArticleCard = ({ article, list }) => {
-    const { title, banner, tags, body, level } = { ...article };
+    const { title, banner, tags, body, level, read_time } = { ...article };
     return (
         <div className={list === true ? style.cardlist : style.card}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>
@@ -30,6 +30,7 @@ const ArticleCard = ({ article, list }) => {
                             </span>
                         ))}
                     </p>
+                    <h6>Reading time : {read_time}</h6>
                 </div>
             </a>
         </div>

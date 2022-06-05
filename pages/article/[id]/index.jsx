@@ -36,6 +36,7 @@ const Article = ({ article }) => {
                             <img src={article.banner} alt="" />
                         </div>
                         <h1>{article.title}</h1>
+                        <h6>{article.read_time} mins</h6>
                         <div
                             dangerouslySetInnerHTML={{ __html: article.body }}
                         ></div>

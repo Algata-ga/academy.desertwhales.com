@@ -11,7 +11,7 @@ const handler = async (req, res) => {
     if (data.length === 0)
         res.status(404).json({ message: "article not found" });
 
-    const { title, banner, level, tags, summary, body } = data[0];
+    const { title, banner, level, tags, summary, body, read_time } = data[0];
     const article = {
         title: title,
         banner: process.env.BACKEND_API_URL.replace("/api", "") + banner,
@@ -19,6 +19,7 @@ const handler = async (req, res) => {
         tags: tags.split(","),
         summary: summary,
         body: body,
+        read_time: read_time,
     };
 
     res.status(200).json(article);
