@@ -18,7 +18,7 @@ const handler = async (req, res) => {
         level: level,
         tags: tags.split(","),
         summary: summary,
-        body: body,
+        body: body.replaceAll('src="', `src=\"${process.env.BACKEND_URL}/`),
         read_time: read_time,
     };
 
