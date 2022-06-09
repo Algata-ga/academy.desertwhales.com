@@ -59,55 +59,68 @@ const Search = ({ tags, difficulty, initialData }) => {
         <div className={style.search}>
             <div className={style.searchcontain}>
                 <div className={style.form}>
-                    <h2>Tags</h2>
-                    <MultiSelectionButtons
-                        list={tags}
-                        toggleStates={filterParams.tags}
-                        setCurrentSelection={(x) =>
-                            dispatch({ type: "tags", value: x })
-                        }
-                    />
-                    <h2>Level</h2>
-                    {difficulty.map((x) => (
-                        <span
-                            key={x.name}
-                            style={{
-                                color: `var(--level-${x.name.toLowerCase()})`,
-                            }}
-                        >
-                            <label htmlFor={x.name.toLowerCase()}>
-                                {x.name}
-                            </label>
+                    <h2>Topics</h2>
+                    <div className={style.multi}>
+                        <MultiSelectionButtons
+                            list={tags}
+                            toggleStates={filterParams.tags}
+                            setCurrentSelection={(x) =>
+                                dispatch({ type: "tags", value: x })
+                            }
+                        />
+                    </div>
+                    <div className={style.difftime}>
+                        <div className={style.diffbox}>
+                            <h2>Level</h2>
+                            <div className={style.levelbox}>
+                                {difficulty.map((x) => (
+                                    <span className={style.difficulty}
+                                        key={x.name}
+                                        style={{
+                                            color: `var(--level-${x.name.toLowerCase()})`,
+                                            border: `1px solid var(--level-${x.name.toLowerCase()})`
+                                        }}
+                                    >
+                                        <label htmlFor={x.name.toLowerCase()}>
+                                            {x.name}
+                                        </label>
 
+                                        <input
+                                            name="level"
+                                            id={x.name.toLowerCase()}
+                                            value={x.name.toLowerCase()}
+                                            type="radio"
+                                            onChange={(e) => {
+                                                dispatch({
+                                                    type: "level",
+                                                    value: x.id,
+                                                });
+                                            }}
+                                        />
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className={style.timebox}>
+                            <h2>Reading Time</h2>
+                            <div className={style.readslider}>
                             <input
-                                name="level"
-                                value={x.name.toLowerCase()}
-                                type="radio"
+                                type="range"
+                                name="reading_time"
                                 onChange={(e) => {
                                     e.preventDefault();
                                     dispatch({
-                                        type: "level",
-                                        value: x.id,
+                                        type: "reading_time",
+                                        value: e.currentTarget.value,
                                     });
                                 }}
                             />
-                        </span>
-                    ))}
-                    <h2>Reading Time</h2>
-                    <input
-                        type="range"
-                        name="reading_time"
-                        onChange={(e) => {
-                            e.preventDefault();
-                            dispatch({
-                                type: "reading_time",
-                                value: e.currentTarget.value,
-                            });
-                        }}
-                    />
-                    <button onClick={() => dispatch({ type: "reset" })}>
-                        Reset
-                    </button>
+                            <button onClick={() => dispatch({ type: "reset" })}>
+                                Reset
+                            </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {isLoading || data.length === 0 ? (
                     <h2>Loading</h2>

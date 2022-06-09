@@ -23,12 +23,39 @@
     border: 2px solid red;
     border-radius: 15px;
 }
+.form h2{
+    text-align: center;
+}
 .form input[type="checkbox"]:checked ~ .tag {
     background-color: #50bcf2;
   }
+.difftime{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.difficulty{
+    border: 1px solid red;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 15px;
+    width: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.levelbox,.readslider{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 .searchboxlist{
     display: grid;
     grid-template-columns: 1fr;
+}
+.multi{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill,140px);
 }
 
 
@@ -40,6 +67,23 @@
 }
 @media screen and (max-width: 768px) {
     .searchbox{
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 100%);
+    }  
+    .difftime{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .levelbox,.readslider{
+        flex-direction: column;
+    }
+    
+}
+@media screen and (max-width: 576px) {
+    
+}
+@media screen and (max-width: 400px) {
+    .searchboxlist{
+        display: grid;
+        grid-template-columns: 100%;
     }  
 }

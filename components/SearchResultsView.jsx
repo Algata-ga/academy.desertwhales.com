@@ -10,7 +10,7 @@ const SearchResultsView = ({ data }) => {
             <button onClick={() => setListView(() => !isListView)}>
                 {isListView ? "Card" : "List"}
             </button>
-            <div className={style.searchboxlist}>
+            <div className={isListView ? style.searchboxlist : style.searchbox}>
                 {data.length == 0 ? (
                     <h2>Not articles found</h2>
                 ) : (

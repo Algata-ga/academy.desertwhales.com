@@ -1,6 +1,12 @@
+
 .active {
-    background-color: lawngreen;
+    background-color: var(--text);
+    color: var(--bg);
+    border: none;
+    margin: 10px;
 }
 .inactive {
     background-color: lavenderblush;
+    border: none;
+    margin: 10px;
 }

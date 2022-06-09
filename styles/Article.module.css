@@ -132,3 +132,10 @@
 .article a:hover{
     color: gold;
 }
+
+
+@media screen and (max-width: 576px)  {
+.containbox{
+    padding: 0;
+}
+}
