@@ -12,11 +12,10 @@ const ArticleCard = ({ article, list }) => {
                 </div>
                 <div className={style.content}>
                     <h4>{title}</h4>
-                    <br />
-                    <h5
+                    <h5 className={style.h5}
                         style={{ color: `var(--level-${level.toLowerCase()})` }}
                     >
-                        {level}
+                        <div className={style.dot} style={{ background: `var(--level-${level.toLowerCase()})` }}></div>{level}
                     </h5>
                     <p>
                         {tags.map((tag) => (
@@ -31,7 +30,7 @@ const ArticleCard = ({ article, list }) => {
                             </span>
                         ))}
                     </p>
-                    <h6>Reading time : {read_time}</h6>
+                    <h6>{read_time} min</h6>
                 </div>
             </a>
         </div>

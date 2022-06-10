@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { Container } from "react-bootstrap";
 import ArticleCard from "../components/ArticleCard";
 import style from "../styles/Index.module.css";
@@ -17,7 +18,11 @@ export default function Home({ latest_articles }) {
 
             <div className={style.article}>
                 <div className={style.articlecontain}>
+                    <div className={style.heading}>
                     <h6>Latest articles</h6>
+                    <a href="/search">View all</a>
+                    </div>
+                    
                     {/*make article card*/}
                     <div className={style.articlebox}>
                         {latest_articles.map((article) => {

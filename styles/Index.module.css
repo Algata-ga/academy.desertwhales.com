@@ -17,14 +17,27 @@
     grid-template-columns: repeat(3, minmax(250px,1fr));
     justify-items: center;
 }
+.heading{
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 16px;
+}
+.heading a{
+    color: var(--text);
+}
 @media screen and (max-width: 1200px) {
     .articlebox{
         grid-template-columns: repeat(2, 1fr);
     }  
 }
 @media screen and (max-width: 768px) {
+    .article{
+        display: grid;
+    }
     .articlebox{
-        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        grid-template-columns: repeat(1, 450px);
+        justify-self: center;
     }  
 }
 @media screen and (max-width: 400px) {

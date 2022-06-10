@@ -103,22 +103,39 @@ const Search = ({ tags, difficulty, initialData }) => {
                         </div>
                         <div className={style.timebox}>
                             <h2>Reading Time</h2>
+
+                            
+                            <div className={style.sliderbox}>
                             <div className={style.readslider}>
-                            <input
-                                type="range"
-                                name="reading_time"
-                                onChange={(e) => {
-                                    e.preventDefault();
-                                    dispatch({
-                                        type: "reading_time",
-                                        value: e.currentTarget.value,
-                                    });
-                                }}
-                            />
-                            <button onClick={() => dispatch({ type: "reset" })}>
-                                Reset
-                            </button>
+                                <input
+                                    type="range"
+                                    name="reading_time"
+                                    className={style.slider}
+                                    min="0"
+                                    max="25"
+                                    step="5"
+                                    onChange={(e) => {
+                                        e.preventDefault();
+                                        dispatch({
+                                            type: "reading_time",
+                                            value: e.currentTarget.value,
+                                        });
+                                    }}
+                                />
+                                <ul className={style.num}>
+                                <li>&nbsp;&nbsp;1</li>
+
+                                    <li>&nbsp;&nbsp;5</li>
+                                    <li>10</li>
+                                    <li>15</li>
+                                    <li>20</li>
+                                    <li>&infin;</li>
+                                </ul>
                             </div>
+                            </div>
+                                <button onClick={() => dispatch({ type: "reset" })}>
+                                    Reset
+                                </button>
                         </div>
                     </div>
                 </div>

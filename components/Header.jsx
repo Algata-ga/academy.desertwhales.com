@@ -58,19 +58,23 @@ const Header = () => {
     return (
         <header className={style.header}>
             <nav className={style.nav}>
-                <div className={style.logo}>
-                    <Image
-                        src={logo}
-                        className={style.imge}
-                        alt="header"
-                        height="0"
-                    />
-                    <div className={style.logoname}>
-                        <h6>Desert</h6>
-                        <h6>Whales</h6>
-                        <h6>Academy</h6>
-                    </div>
-                </div>
+                <a href="/">
+                    <div className={style.logo}>
+
+                        <Image
+                            src={logo}
+                            className={style.imge}
+                            alt="header"
+                            height="0"
+                        />
+
+                        <div className={style.logoname}>
+                            <h6>Desert</h6>
+                            <h6>Whales</h6>
+                            <h6>Academy</h6>
+                        </div>
+
+                    </div> </a>
                 <div className={style.search}>
                     <input
                         type="search"
