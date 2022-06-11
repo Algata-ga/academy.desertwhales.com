@@ -7,7 +7,7 @@ const MultiSelectionButtons = ({ list, toggleStates, setCurrentSelection }) => {
             {list.map((x) => {
                 //console.log(`${x} ${toggleStates.includes(x)}`);
                 return (
-                        <button
+                    <button
                         key={`${x.name} ${toggleStates.includes(x)}`}
                         onClick={(e) => {
                             e.preventDefault();

@@ -3,7 +3,6 @@ import style from "../styles/ArticleCard.module.css";
 
 const ArticleCard = ({ article, list }) => {
     const { title, banner, tags, level, read_time } = { ...article };
-    console.log(article);
     return (
         <div className={list === true ? style.cardlist : style.card}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>
@@ -12,10 +11,17 @@ const ArticleCard = ({ article, list }) => {
                 </div>
                 <div className={style.content}>
                     <h4>{title}</h4>
-                    <h5 className={style.h5}
+                    <h5
+                        className={style.h5}
                         style={{ color: `var(--level-${level.toLowerCase()})` }}
                     >
-                        <div className={style.dot} style={{ background: `var(--level-${level.toLowerCase()})` }}></div>{level}
+                        <div
+                            className={style.dot}
+                            style={{
+                                background: `var(--level-${level.toLowerCase()})`,
+                            }}
+                        ></div>
+                        {level}
                     </h5>
                     <p>
                         {tags.map((tag) => (

@@ -4,6 +4,7 @@ import style from "../styles/Header.module.css";
 import { useState, useEffect } from "react";
 import { BsFillSunFill, BsFillCloudMoonFill } from "react-icons/bs";
 import tag_color from "../utils/tag_color";
+import Link from "next/link";
 
 const setGlobalTheme = (theme_id) => {
     if (window === undefined) return;
@@ -60,7 +61,6 @@ const Header = () => {
             <nav className={style.nav}>
                 <a href="/">
                     <div className={style.logo}>
-
                         <Image
                             src={logo}
                             className={style.imge}
@@ -73,8 +73,8 @@ const Header = () => {
                             <h6>Whales</h6>
                             <h6>Academy</h6>
                         </div>
-
-                    </div> </a>
+                    </div>{" "}
+                </a>
                 <div className={style.search}>
                     <input
                         type="search"
@@ -95,12 +95,14 @@ const Header = () => {
                         </li>
                         <ul className={sub ? style.subclose : style.subopen}>
                             {tags.map((x) => (
-                                <li
-                                    key={x}
-                                    style={{ color: tag_color(x.name) }}
-                                >
-                                    {x.name}
-                                </li>
+                                <Link href={`/search?tag=${x.name}`}>
+                                    <li
+                                        key={x}
+                                        style={{ color: tag_color(x.name) }}
+                                    >
+                                        {x.name}
+                                    </li>
+                                </Link>
                             ))}
                         </ul>
                         <li
