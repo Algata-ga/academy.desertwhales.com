@@ -1,6 +1,7 @@
 import SearchResultsView from "../components/SearchResultsView";
 import MultiSelectionButtons from "../components/MultiSelectionButtons";
 import useSearch from "../hooks/useSearch";
+import { SWRConfig } from "swr";
 import style from "../styles/Search.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useReducer } from "react";
@@ -135,11 +136,13 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                         </div>
                     </div>
                 </div>
-                {isLoading || data.length === 0 ? (
-                    <h2>Loading</h2>
-                ) : (
-                    <SearchResultsView data={data} />
-                )}
+                <SWRConfig value={initialData.results}>
+                    {isLoading || data.length === 0 ? (
+                        <h2>Loading</h2>
+                    ) : (
+                        <SearchResultsView data={data} />
+                    )}
+                </SWRConfig>
             </div>
         </div>
     );

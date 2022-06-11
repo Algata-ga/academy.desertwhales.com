@@ -79,7 +79,7 @@ const Header = () => {
                     <input
                         type="search"
                         name=""
-                        placeholder="Search, content, course, author"
+                        placeholder="Search articles here"
                         id="search"
                     />
                 </div>
@@ -93,7 +93,15 @@ const Header = () => {
                         >
                             Topics
                         </li>
-                        <ul className={sub ? style.subclose : style.subopen}>
+                        <ul
+                            className={sub ? style.subclose : style.subopen}
+                            onMouseLeave={() =>
+                                setTimeout(
+                                    () => sub === false && setSub(true),
+                                    1000
+                                )
+                            }
+                        >
                             {tags.map((x) => (
                                 <Link
                                     href={`/search?tag=${x.name}`}
