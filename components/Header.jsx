@@ -59,22 +59,25 @@ const Header = () => {
     return (
         <header className={style.header}>
             <nav className={style.nav}>
-                <a href="/">
-                    <div className={style.logo}>
-                        <Image
-                            src={logo}
-                            className={style.imge}
-                            alt="header"
-                            height="0"
-                        />
+                <Link href="/">
+                    <a>
+                        <div className={style.logo}>
+                            <Image
+                                src={logo}
+                                className={style.imge}
+                                alt="header"
+                                height="0"
+                            />
 
-                        <div className={style.logoname}>
-                            <h6>Desert</h6>
-                            <h6>Whales</h6>
-                            <h6>Academy</h6>
+                            <div className={style.logoname}>
+                                <h6>Desert</h6>
+                                <h6>Whales</h6>
+                                <h6>Academy</h6>
+                            </div>
                         </div>
-                    </div>{" "}
-                </a>
+
+                    </a>
+                </Link>
                 <div className={style.search}>
                     <input
                         type="search"
@@ -85,7 +88,11 @@ const Header = () => {
                 </div>
                 <div className={nav ? style.close : style.open}>
                     <ul>
+                        <Link href="/search">
+                        <a>
                         <li>Explore</li>
+                            </a>
+                            </Link>
                         <li
                             onClick={() => {
                                 setSub(!sub);

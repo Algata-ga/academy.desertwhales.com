@@ -90,7 +90,7 @@
     }
 
     .contain h5 {
-        width: 90%;
+        width: 980%;
         font-size: 20.7px;
         line-height: 32px;
         z-index: 1;
@@ -109,5 +109,10 @@
         font-size: 19.7px;
         line-height: 30px;
         z-index: 1;
+    }
+    .vector2 {
+        width: 200px;
+        height: 250px;
+        top: 0;
     }
 }
