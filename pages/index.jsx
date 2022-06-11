@@ -23,7 +23,9 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                 <div className={style.articlecontain}>
                     <div className={style.heading}>
                         <h6>Latest articles</h6>
-                        <a href="/search">View all</a>
+                        <Link href="/search">
+                            <a>View all</a>
+                        </Link>
                     </div>
 
                     {/*make article card*/}

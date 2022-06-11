@@ -107,7 +107,10 @@ const Header = () => {
                                     href={`/search?tag=${x.name}`}
                                     key={x.name}
                                 >
-                                    <li style={{ color: tag_color(x.name) }}>
+                                    <li
+                                        style={{ color: tag_color(x.name) }}
+                                        onClick={() => setSub(true)}
+                                    >
                                         {x.name}
                                     </li>
                                 </Link>
