@@ -95,11 +95,11 @@ const Header = () => {
                         </li>
                         <ul className={sub ? style.subclose : style.subopen}>
                             {tags.map((x) => (
-                                <Link href={`/search?tag=${x.name}`}>
-                                    <li
-                                        key={x}
-                                        style={{ color: tag_color(x.name) }}
-                                    >
+                                <Link
+                                    href={`/search?tag=${x.name}`}
+                                    key={x.name}
+                                >
+                                    <li style={{ color: tag_color(x.name) }}>
                                         {x.name}
                                     </li>
                                 </Link>
