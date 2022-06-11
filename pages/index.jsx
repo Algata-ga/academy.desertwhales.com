@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { Container } from "react-bootstrap";
 import ArticleCard from "../components/ArticleCard";
+import Landing from "../components/Landing";
 import style from "../styles/Index.module.css";
 
 export default function Home({ latest_articles }) {
@@ -15,6 +16,7 @@ export default function Home({ latest_articles }) {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Landing />
 
             <div className={style.article}>
                 <div className={style.articlecontain}>
