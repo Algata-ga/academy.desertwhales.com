@@ -1,5 +1,6 @@
 import tag_color from "../utils/tag_color";
 import style from "../styles/ArticleCard.module.css";
+import Image from "next/image";
 
 const ArticleCard = ({ article, list }) => {
     const { title, banner, tags, level, read_time } = { ...article };
@@ -7,7 +8,7 @@ const ArticleCard = ({ article, list }) => {
         <div className={list === true ? style.cardlist : style.card}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>
                 <div className={style.imgbox}>
-                    <img src={banner} />
+                    <Image className={style.img} height="300" width={200} src={banner} placeholder="blur" blurDataURL={banner} layout="fill" alt="banner img" />
                 </div>
                 <div className={style.content}>
                     <h4>{title}</h4>
