@@ -34,6 +34,8 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                 return { ...state, reading_time: action.value };
             case "set":
                 return action.value;
+            case "title":
+                return { ...state, title: action.value };
             case "reset":
                 return { tags: [], level: null, reading_time: 0, title: null };
         }
@@ -50,8 +52,16 @@ const Search = ({ query, tags, difficulty, initialData }) => {
 
     const router = useRouter();
     useEffect(() => {
-        console.log(filterParams);
-    }, []);
+        console.log(router.query);
+        if (Object.keys(router.query).includes("title"))
+            dispatch({ type: "title", value: router.query.title });
+        if (Object.keys(router.query).includes("tag"))
+            dispatch({
+                type: "tags",
+                value: tags[tags.map((x) => x.name).indexOf(router.query.tag)]
+                    .id,
+            });
+    }, [router]);
 
     useEffect(() => console.log(filterParams));
     return (
@@ -86,16 +96,12 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                                             color: `var(--level-${x.name.toLowerCase()})`,
                                             border: `1px solid var(--level-${x.name.toLowerCase()})`,
                                             background:
-                                                    filterParams.level === x.id
-                                                        ? "var(--text)"
-                                                        : "var(--bg)",
+                                                filterParams.level === x.id
+                                                    ? "var(--text)"
+                                                    : "var(--bg)",
                                         }}
                                     >
-                                        <label
-                                            
-                                        >
-                                            {x.name}
-                                        </label>
+                                        <label>{x.name}</label>
                                     </span>
                                 ))}
                             </div>
@@ -137,10 +143,12 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                     </div>
                 </div>
                 <SWRConfig value={initialData.results}>
-                    {isLoading || data.length === 0 ? (
+                    {isLoading ? (
                         <h2>Loading</h2>
-                    ) : (
+                    ) : data.length !== 0 ? (
                         <SearchResultsView data={data} />
+                    ) : (
+                        <h2>No results found</h2>
                     )}
                 </SWRConfig>
             </div>
