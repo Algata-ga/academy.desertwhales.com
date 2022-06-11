@@ -13,7 +13,8 @@ const useCustomScroll = (scrollSliderRef) => {
                     document.documentElement.clientHeight)) *
             100;
 
-        scrollSliderRef.current.value = scroll_percentage;
+        if (scrollSliderRef.current !== null)
+            scrollSliderRef.current.value = scroll_percentage;
     };
 
     const handleSliderScroll = (e) => {

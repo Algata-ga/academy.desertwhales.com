@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { BsFillSunFill, BsFillCloudMoonFill } from "react-icons/bs";
 import tag_color from "../utils/tag_color";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const setGlobalTheme = (theme_id) => {
     if (window === undefined) return;
@@ -45,6 +46,7 @@ const tags = [
 ];
 const Header = () => {
     const [theme, setTheme] = useState(0);
+    const router = useRouter();
 
     useEffect(() => {
         setGlobalTheme(theme);
@@ -84,6 +86,12 @@ const Header = () => {
                         name=""
                         placeholder="Search articles here"
                         id="search"
+                        onKeyPress={(e) => {
+                            if (e.key === "Enter") {
+                                console.log(e.target.value);
+                                router.push(`/search?title=${e.target.value}`);
+                            }
+                        }}
                     />
                 </div>
                 <div className={nav ? style.close : style.open}>
@@ -114,7 +122,10 @@ const Header = () => {
                                     href={`/search?tag=${x.name}`}
                                     key={x.name}
                                 >
-                                    <li style={{ color: tag_color(x.name) }}>
+                                    <li
+                                        style={{ color: tag_color(x.name) }}
+                                        onClick={() => setSub(true)}
+                                    >
                                         {x.name}
                                     </li>
                                 </Link>
