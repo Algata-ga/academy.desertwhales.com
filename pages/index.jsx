@@ -39,10 +39,13 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                     </div>
                 </div>
             </div>
-            {tags.slice(0, 5).map((x) => (
-                <span>{x.name}</span>
-            ))}
-            <br />
+            <div className={style.tag}>
+                <div className={style.tagscontain}>
+                    {tags.slice(0, 6).map((x) => (
+                        <span>{x.name}</span>
+                    ))}
+                </div>
+            </div>
             {tagged_feed.map((tag) => (
                 <div className={style.article}>
                     <div className={style.articlecontain}>
