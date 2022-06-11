@@ -5,7 +5,9 @@ import ArticleCard from "../components/ArticleCard";
 import Landing from "../components/Landing";
 import style from "../styles/Index.module.css";
 
-export default function Home({ latest_articles }) {
+import getShuffledArray from "../utils/shuffleArray";
+
+export default function Home({ latest_articles, tagged_feed, tags }) {
     return (
         <div>
             <Head>
@@ -17,14 +19,13 @@ export default function Home({ latest_articles }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Landing />
-
             <div className={style.article}>
                 <div className={style.articlecontain}>
                     <div className={style.heading}>
-                    <h6>Latest articles</h6>
-                    <a href="/search">View all</a>
+                        <h6>Latest articles</h6>
+                        <a href="/search">View all</a>
                     </div>
-                    
+
                     {/*make article card*/}
                     <div className={style.articlebox}>
                         {latest_articles.map((article) => {
@@ -38,6 +39,32 @@ export default function Home({ latest_articles }) {
                     </div>
                 </div>
             </div>
+            {tags.slice(0, 5).map((x) => (
+                <span>{x.name}</span>
+            ))}
+            <br />
+            {tagged_feed.map((tag) => (
+                <div className={style.article}>
+                    <div className={style.articlecontain}>
+                        <div className={style.heading}>
+                            <h6>{tag.name}</h6>
+                            <a href="/search">View all</a>
+                        </div>
+
+                        {/*make article card*/}
+                        <div className={style.articlebox}>
+                            {tag.data.map((article) => {
+                                return (
+                                    <ArticleCard
+                                        article={article}
+                                        key={article.title}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }
@@ -48,8 +75,26 @@ export const getServerSideProps = async (context) => {
         "public, s-maxage=30, stale-while-revalidate=15"
     );
 
-    const response = await fetch(`${process.env.BASE_URL}/api/articles/latest`);
+    let response = await fetch(`${process.env.BASE_URL}/api/articles/latest`);
     const latest_articles = await response.json();
 
-    return { props: { latest_articles } };
+    response = await fetch(`${process.env.BASE_URL}/api/tags`);
+    const tags = await response.json();
+
+    const shuffledTags = getShuffledArray(tags);
+
+    const tagged_feed_data = await Promise.all(
+        shuffledTags
+            .slice(0, 5)
+            .map((x) =>
+                fetch(`${process.env.BASE_URL}/api/articles/${x.name}`).then(
+                    (x) => x.json()
+                )
+            )
+    );
+
+    const tagged_feed = shuffledTags.slice(0, 5).reduce((prev, cur, i) => {
+        return [...prev, { name: cur.name, data: [...tagged_feed_data[i]] }];
+    }, []);
+    return { props: { latest_articles, tagged_feed, tags: shuffledTags } };
 };
