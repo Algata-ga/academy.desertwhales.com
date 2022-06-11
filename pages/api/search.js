@@ -8,7 +8,6 @@ const handler = async (req, res) => {
         }
         return prev + `&${x}=${query[x]}`;
     }, "");
-    console.log(params);
     const response = await fetch(
         `${process.env.BACKEND_API_URL}/search?_format=json${params}`
     );

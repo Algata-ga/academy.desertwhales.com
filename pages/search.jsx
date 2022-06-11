@@ -11,10 +11,14 @@ const Search = ({ query, tags, difficulty, initialData }) => {
     const reducer = (state, action) => {
         switch (action.type) {
             case "level":
-                console.log(state.level === null ? action.value : null);
                 return {
                     ...state,
-                    level: state.level === null ? action.value : null,
+                    level:
+                        state.level === null
+                            ? action.value
+                            : state.level === action.value
+                            ? null
+                            : action.value,
                 };
             case "tags":
                 if (state.tags.includes(action.value)) {
