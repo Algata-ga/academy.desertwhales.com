@@ -76,24 +76,23 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                                     <span
                                         className={style.difficulty}
                                         key={x.name}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "level",
+                                                value: x.id,
+                                            });
+                                        }}
                                         style={{
                                             color: `var(--level-${x.name.toLowerCase()})`,
                                             border: `1px solid var(--level-${x.name.toLowerCase()})`,
+                                            background:
+                                                    filterParams.level === x.id
+                                                        ? "var(--text)"
+                                                        : "var(--bg)",
                                         }}
                                     >
                                         <label
-                                            onClick={() => {
-                                                dispatch({
-                                                    type: "level",
-                                                    value: x.id,
-                                                });
-                                            }}
-                                            style={{
-                                                backgroundColor:
-                                                    filterParams.level === x.id
-                                                        ? "black"
-                                                        : "red",
-                                            }}
+                                            
                                         >
                                             {x.name}
                                         </label>
