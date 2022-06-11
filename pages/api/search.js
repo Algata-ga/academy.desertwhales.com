@@ -3,11 +3,12 @@ const handler = async (req, res) => {
     const params = Object.keys(query).reduce((prev, x) => {
         if (Array.isArray(query[x])) {
             return (
-                prev + query[x].reduce((prev, cur) => prev + `&{x}=${cur}`, "")
+                prev + query[x].reduce((prev, cur) => prev + `&${x}=${cur}`, "")
             );
         }
         return prev + `&${x}=${query[x]}`;
     }, "");
+    console.log(params);
     const response = await fetch(
         `${process.env.BACKEND_API_URL}/search?_format=json${params}`
     );
