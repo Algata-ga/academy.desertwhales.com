@@ -1,7 +1,7 @@
-.card{
+.card {
     background: var(--card-bg);
     box-shadow: var(--card-stroke);
-    border: 1px solid var(--card-border);
+    border: 0.2px solid var(--card-border);
     display: flex;
     justify-content: center;
     margin: 10px;
@@ -9,44 +9,53 @@
     border-radius: 15px;
     width: 93%;
 }
-.lines{
+
+.lines {
     display: none;
 }
-.card .imgbox{
+
+.card .imgbox {
     width: 100%;
     height: auto;
     margin-top: 10px;
     overflow: hidden;
 }
-.card span{
+
+.card span {
     position: relative !important;
     display: flex !important;
 }
-.card img{
+
+.card img {
     width: 100% !important;
     height: 100% !important;
     position: relative !important;
     object-fit: contain !important;
+    aspect-ratio: 16/9;
 }
-.card .img{
+
+.card .img {
     width: 100%;
     height: 100%;
     position: relative;
     object-fit: contain;
 }
-.card a{
+
+.card a {
     color: var(--text);
     display: flex;
     flex-direction: column;
     width: 100%;
     position: relative;
 }
-.card a p{
+
+.card a p {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
-.card a p span{
+
+.card a p span {
     margin: 10px 4px;
     padding: 0 5px;
     border-radius: 15px;
@@ -55,17 +64,32 @@
     justify-content: center;
 
 }
-.card a h6{
+
+.card a h6 {
     position: relative;
     bottom: 0%;
     text-align: end;
     right: 10px;
 }
-.card h1,.card h2,.card h3,.card h4,.card h5,.card h6,.card p{
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.card p {
     padding: 0;
     margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.card .h5{
+.card h4{
+    max-width: 27ch;
+}
+
+.card .h5 {
     position: absolute;
     bottom: 0;
     text-transform: uppercase;
@@ -74,7 +98,8 @@
     display: flex;
     align-items: center
 }
-.dot{
+
+.dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -90,50 +115,76 @@
 
 
 
-.cardlist{
-    background: var(--card-bg);
-    box-shadow: var(--card-stroke);
-    border: 1px solid var(--card-border);
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    padding: 0 10px;
-    border-radius: 15px;
-    width: 93%;
+@media screen and (min-width: 768px) {
+    .cardlist {
+        background: var(--card-bg);
+        box-shadow: var(--card-stroke);
+        border: 1px solid var(--card-border);
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        padding: 0 10px;
+        border-radius: 15px;
+        width: 93%;
+    
+    }
+    
+    .cardlist a {
+        color: var(--text);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 10px;
+        position: relative;
+    }
+    
+    .cardlist .imgbox {
+        height: 150px;
+        width: 265px;
+        overflow: hidden;
+        border-radius: 15px;
+        margin: 0.5rem 0;
+    }
+    .cardlist .imgbox span{
+        position: relative !important;
+        display: flex;
+    }
+    .cardlist .imgbox img {
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+    
+    .cardlist .content {
+        padding-left: 20px;
+    }
+    
+    .cardlist h5 {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+    }
+    .cardlist a p{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
 
+    }
+    .cardlist a p span {
+        margin: 10px 4px;
+        padding: 0 5px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+    }
 }
-.cardlist a{
-    color: var(--text);
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 10px;
-    position: relative;
-}
-.cardlist .imgbox{
-    height: 150px;
-    width: 265px;
-    border: 1px solid red;
-    overflow: hidden;
-    border-radius: 15px;
-}
-.cardlist .imgbox img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-.cardlist .content{
-    padding-left: 20px;
-}
-.cardlist h5{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
 @media screen and (max-width: 400px) {
-    .card a p{
-        grid-template-columns: repeat(2,1fr);
+    .card a p {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

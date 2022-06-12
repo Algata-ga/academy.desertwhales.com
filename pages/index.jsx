@@ -6,6 +6,8 @@ import Landing from "../components/Landing";
 import style from "../styles/Index.module.css";
 
 import getShuffledArray from "../utils/shuffleArray";
+import tag_color from "../utils/tag_color";
+
 
 export default function Home({ latest_articles, tagged_feed, tags }) {
     return (
@@ -44,7 +46,13 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
             <div className={style.tag}>
                 <div className={style.tagscontain}>
                     {tags.slice(0, 6).map((x) => (
-                        <span key={x.name}>{x.name}</span>
+                        <Link href={`/search?tag=${x.name}`}>
+                        <a>
+                        <span key={x.name} style={{
+                                    color: `${tag_color(x.name)}`,
+                                }}>{x.name}</span>
+                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

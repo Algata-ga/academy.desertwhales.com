@@ -2,6 +2,8 @@ import style from "../../../styles/Article.module.css";
 import { useRef } from "react";
 import useCustomScroll from "../../../hooks/useCustomScroll";
 import Head from "next/head";
+import Image from "next/image";
+
 
 const Article = ({ article }) => {
     const sliderRef = useRef();
@@ -33,7 +35,7 @@ const Article = ({ article }) => {
                     </div>
                     <article className={style.article}>
                         <div className={style.imgbox}>
-                            <img src={article.banner} alt="" />
+                            <Image src={article.banner} layout="fill" placeholder="blur" blurDataURL={article.banner} alt="banner" />
                         </div>
                         <h1>{article.title}</h1>
                         <h6>{article.read_time} mins</h6>

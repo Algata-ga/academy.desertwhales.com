@@ -68,8 +68,10 @@
     align-items: center;
     justify-content: center;
     position: sticky;
-    top: 0;
+    top: 70px;
     margin-top: 1rem;
+
+    z-index: 2;
 }
 /*
 .slider{
@@ -109,10 +111,16 @@
     border-radius: 15px;
     overflow: hidden;
 }
-.article img{
-    width: 100%;
-    height: auto;
+.article span{
+    display: flex !important;
+    position: relative !important;
+}
+.section img{
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
     align-self: center;
+    aspect-ratio: 16/9;
 }
 .article h1{
     font-style: normal;

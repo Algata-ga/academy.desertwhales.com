@@ -10,6 +10,7 @@ html {
     --level-intermediate: #c7b300;
     --level-advanced: #c70000;
     --text: #000000;
+    --footer: rgba(240, 236, 231, 0.89);;
 }
 
 html[data-theme="dark"] {
@@ -18,12 +19,13 @@ html[data-theme="dark"] {
     --bg: linear-gradient(264.27deg, #0e0d0d -41.22%, #050404 223.16%);
     --cardtag: #575757;
     --card-bg: #070707;
-    --card-border: #f0ece7;
+    --card-border: #313131;
     --card-stroke: #313131;
     --level-beginner: #63c083;
     --level-intermediate: #c0b763;
     --level-advanced: #c06363;
     --text: #ffffff;
+    --footer: #121212;
 }
 
 html.theme-transition,

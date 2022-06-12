@@ -1,6 +1,6 @@
 .footerbg{
-    background: #121212;
-    color: white;
+    background: var(--footer);
+    color: var(--text);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@
     list-style: none;
 }
 .footer a{
-    color: white;
+    color: var(--text);
 }
 .footer a:hover{
     color: #c89d66;
