@@ -8,6 +8,12 @@
     justify-content: center;
     flex-direction: column;
 }
+.loader{
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .search h2{
     margin: 1rem 0;
 }

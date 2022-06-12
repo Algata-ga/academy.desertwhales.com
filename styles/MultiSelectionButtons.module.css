@@ -1,12 +1,18 @@
 
 .active {
-    background-color: var(--text);
+    border: 2px solid red;
+    border-radius: 15px;
     color: var(--bg);
-    border: none;
     margin: 10px;
 }
 .inactive {
-    background-color: lavenderblush;
+    background-color: transparent;
     border: none;
+    border: 2px solid transparent;
+
     margin: 10px;
+}
+.inactive:hover{
+    border: 2px solid;
+    border-radius: 15px;
 }

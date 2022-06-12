@@ -5,6 +5,7 @@ import { SWRConfig } from "swr";
 import style from "../styles/Search.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useReducer } from "react";
+import { NewtonsCradle } from '@uiball/loaders'
 
 import query_generator from "../utils/query_generator";
 
@@ -144,7 +145,15 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                 </div>
                 <SWRConfig value={initialData.results}>
                     {isLoading ? (
-                        <h2>Loading</h2>
+                        
+
+                        <div className={style.loader}>
+                            <NewtonsCradle 
+                         size={40}
+                         speed={1.4} 
+                         color="black" 
+                        />
+                        </div>
                     ) : data.length !== 0 ? (
                         <SearchResultsView data={data} />
                     ) : (

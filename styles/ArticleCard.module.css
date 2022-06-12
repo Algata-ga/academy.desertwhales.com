@@ -53,6 +53,7 @@
     display: grid;
     justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
+    font-weight: 400;
 }
 
 .card a p span {
@@ -87,6 +88,7 @@
 }
 .card h4{
     max-width: 27ch;
+    font-weight: 500;
 }
 
 .card .h5 {

@@ -6,6 +6,7 @@ import { BsFillSunFill, BsFillCloudMoonFill } from "react-icons/bs";
 import tag_color from "../utils/tag_color";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { BiDownArrow,BiUpArrow } from "react-icons/bs"
 
 const setGlobalTheme = (theme_id) => {
     if (window === undefined) return;
@@ -106,7 +107,7 @@ const Header = () => {
                                 setSub(!sub);
                             }}
                         >
-                            Topics
+                            Topics { sub ? "doen" : "up"  }
                         </li>
                         <ul
                             className={sub ? style.subclose : style.subopen}

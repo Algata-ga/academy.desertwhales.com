@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     z-index: 5;
+    font-weight: bold;
 }
 .header a{
     color: var(--text);
@@ -36,7 +37,7 @@
 
 .logo h6 {
     margin: 2px;
-    font-weight: bolder;
+    font-weight: bold;
     padding-left: 10px;
 }
 
@@ -76,8 +77,9 @@
 
 .open li,.close li {
     margin: 0 10px;
-}
+    cursor: pointer;
 
+}
 .open ul ul,.close ul ul {
     position: absolute;
     right: 50px;
@@ -87,13 +89,11 @@
     height: max-content;
     flex-direction: row;
     padding: 1rem 0;
-    background: var(--text);
+    background: var(--nav-text);
     border-radius: 10px;
     overflow-y: auto;
     height: 300px;
     justify-content: space-evenly;
-    color: var(--search-bg);
-
     
 }
 .subclose{
@@ -147,9 +147,10 @@
     border: 2px solid transparent;
     transition: .3s ease-in-out;
     border-radius: 5px;
+    cursor: pointer;
 }
 .open ul ul li:hover,.close ul ul li:hover{
-    border: 2px solid red;
+    color: grey !important;
 }
 
 .hamburger {
@@ -166,8 +167,15 @@
     .open ul ul,.close ul ul{
         right: 7%;
     }
+
 }
 @media screen and (max-width: 768px) {
+    .header {
+        color: var(--nav-text);
+    }
+    .header a{
+        color: var(--nav-text);
+    }
     .logoname {
         display: none;
     }
@@ -201,7 +209,6 @@
         justify-content: center;
     }
     .open ul ,.close ul{
-
     }
 
     .close{
@@ -209,7 +216,7 @@
         top: 80px;
         backdrop-filter: blur(5px);
         z-index: 2;
-        clip-path: circle(0px at 0% 0% );
+        clip-path: circle(0px at 100% 0% );
         transition: 2s ease-in-out;
         display: flex;
         align-items: center;
@@ -235,7 +242,7 @@
         width: 90%;
         height: 70vh;
         border-radius: 15px;
-        background: var(--text);
+        background: var(--nav);
     }
 
     .open ul,.close ul {
@@ -246,7 +253,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: var(--search-bg);
 
     }
 
@@ -273,7 +279,7 @@
         flex-basis: auto;
     }
     .open ul ul,.close ul ul{
-        background: var(--search-bg);
-        color: var(--text);
+        background: var(--nav);
+        color: var(--nav-text);
     }
 }
