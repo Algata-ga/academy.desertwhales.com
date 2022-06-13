@@ -99,7 +99,7 @@ const Header = () => {
                     <ul>
                         <Link href="/search">
                         <a>
-                        <li>Explore</li>
+                        <li className="">Explore</li>
                             </a>
                             </Link>
                         <li
@@ -107,7 +107,7 @@ const Header = () => {
                                 setSub(!sub);
                             }}
                         >
-                            Topics { sub ? "doen" : "up"  }
+                            Topics { sub ? "down" : "up"  }
                         </li>
                         <ul
                             className={sub ? style.subclose : style.subopen}

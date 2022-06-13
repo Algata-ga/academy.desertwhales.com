@@ -17,6 +17,7 @@ html {
     --footer: rgba(240, 236, 231, 0.89);
     --nav: #000;
     --nav-text: #fff;
+    --hamburger: #000;
 
 }
 
@@ -35,7 +36,7 @@ html[data-theme="dark"] {
     --footer: #121212;
     --nav: #000;
     --nav-text: #fff;
-
+    --hamburger: #c89d65;
 }
 
 html.theme-transition,

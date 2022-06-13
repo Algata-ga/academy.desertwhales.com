@@ -1,5 +1,5 @@
 .header {
-    height: 70px;
+    height: max-content;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
@@ -14,15 +14,13 @@
 .header a{
     color: var(--text);
 }
-.header a:hover{
-    color: var(--text);
-}
 
 .nav {
     width: min(90rem, 90%);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0;
 }
 
 .logo {
@@ -43,11 +41,13 @@
 
 .search input {
     width: 25ch;
+    height: 35px;
     text-align: center;
     -webkit-animation: .3s ease-in-out;
     transition: .3s ease-in-out;
     border-radius: 10px;
     border: none;
+    font-weight: bold;
     outline: none;
     background: var(--search-bg);
     color: var(--search-text);
@@ -71,6 +71,7 @@
     list-style: none;
     margin: 0;
     padding-left: 0;
+    align-items: center;
     
     
 }
@@ -78,6 +79,7 @@
 .open li,.close li {
     margin: 0 10px;
     cursor: pointer;
+    display: flex;
 
 }
 .open ul ul,.close ul ul {
@@ -95,6 +97,9 @@
     height: 300px;
     justify-content: space-evenly;
     
+}
+.change{
+    font-size: 25px;
 }
 .subclose{
     display: none !important;
@@ -194,7 +199,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: var(--universal1);
+        background: var(--hamburger);
         margin: 3px;
 
     }
@@ -265,6 +270,7 @@
         position: absolute;
         top: -20px;
         right: 20px;
+
     }
     .open ul ul ,.close ul ul  {
         position: relative;
