@@ -6,7 +6,7 @@ import { BsFillSunFill, BsFillCloudMoonFill } from "react-icons/bs";
 import tag_color from "../utils/tag_color";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { BiDownArrow,BiUpArrow } from "react-icons/bs"
+import { BiDownArrow, BiUpArrow } from "react-icons/bs";
 
 const setGlobalTheme = (theme_id) => {
     if (window === undefined) return;
@@ -78,7 +78,6 @@ const Header = () => {
                                 <h6>Academy</h6>
                             </div>
                         </div>
-
                     </a>
                 </Link>
                 <div className={style.search}>
@@ -98,16 +97,16 @@ const Header = () => {
                 <div className={nav ? style.close : style.open}>
                     <ul>
                         <Link href="/search">
-                        <a>
-                        <li className="">Explore</li>
+                            <a>
+                                <li className="">Explore</li>
                             </a>
-                            </Link>
+                        </Link>
                         <li
                             onClick={() => {
                                 setSub(!sub);
                             }}
                         >
-                            Topics { sub ? "down" : "up"  }
+                            Topics {sub ? "▾" : "▴"}
                         </li>
                         <ul
                             className={sub ? style.subclose : style.subopen}
