@@ -19,8 +19,8 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                         state.level === null
                             ? action.value
                             : state.level === action.value
-                            ? null
-                            : action.value,
+                                ? null
+                                : action.value,
                 };
             case "tags":
                 if (state.tags.includes(action.value)) {
@@ -69,7 +69,9 @@ const Search = ({ query, tags, difficulty, initialData }) => {
         <div className={style.search}>
             <div className={style.searchcontain}>
                 <div className={style.form}>
-                    <h2>Topics</h2>
+                    <input type="checkbox" name="mul" id="mul" />
+                    <h2 className={style.formh2}><label htmlFor="mul">Topics </label></h2>
+
                     <div className={style.multi}>
                         <MultiSelectionButtons
                             list={tags}
@@ -81,7 +83,8 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                     </div>
                     <div className={style.difftime}>
                         <div className={style.diffbox}>
-                            <h2>Level</h2>
+                            <input type="checkbox" name="lev" id="lev" />
+                            <h2 className={style.diffh2}><label htmlFor="lev"> Level</label></h2>
                             <div className={style.levelbox}>
                                 {difficulty.map((x) => (
                                     <span
@@ -108,7 +111,8 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                             </div>
                         </div>
                         <div className={style.timebox}>
-                            <h2>Reading Time</h2>
+                            <input type="checkbox" name="read" id="read" />
+                            <h2 className={style.readh2}><label htmlFor="read"> Reading Time</label></h2>
 
                             <div className={style.sliderbox}>
                                 <div className={style.readslider}>
@@ -145,14 +149,14 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                 </div>
                 <SWRConfig value={initialData.results}>
                     {isLoading ? (
-                        
+
 
                         <div className={style.loader}>
-                            <NewtonsCradle 
-                         size={40}
-                         speed={1.4} 
-                         color="black" 
-                        />
+                            <NewtonsCradle
+                                size={40}
+                                speed={1.4}
+                                color="black"
+                            />
                         </div>
                     ) : data.length !== 0 ? (
                         <SearchResultsView data={data} />

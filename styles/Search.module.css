@@ -37,7 +37,35 @@
 }
 .form input[type="checkbox"]:checked ~ .tag {
     background-color: #50bcf2;
-  }
+}
+.form input[type="checkbox"]:nth-child(n){
+    display: none;
+}
+.multi{
+    opacity: 1;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill,140px);
+    height: 0px ;
+    position: relative;
+    transition: 0.2s ease;
+    top: -100%;
+    left: -100%;
+}
+.form input:checked ~ .multi{
+   opacity: 1;
+   height: auto !important;
+   transition: 0.2s ease;
+    left: 0%;
+    top: 0;
+
+}
+.formh2 label::after{
+    content: " ▾";
+}
+.form input:checked ~ .formh2 label::after{
+    content: " ▴";
+}
 .difftime{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -52,12 +80,37 @@
     align-items: center;
     justify-content: center;
 }
-.levelbox,.readslider{
+.levelbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    opacity: 0;
+    height: 0px;
+    transition: 0.2s ease;
+    position: relative;
+    top: -100%;
+    left: -100%;
+}
+.diffbox input:checked ~ .levelbox{
+    opacity: 1;
+    height: auto;
+    transition: 0.2s ease;
+    top: 0;
+    left: 0;
+}
+.diffh2 label::after{
+    content: " ▾";
+}
+.form input:checked ~ .diffh2 label::after{
+    content: " ▴";
+}
+.readslider{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 .levelbox input{
+    opacity: 0;
     display: none;
 }
 .levelbox label{
@@ -67,11 +120,7 @@
     display: grid;
     grid-template-columns: 1fr;
 }
-.multi{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fill,140px);
-}
+
 
 .timebox{
     width: 100%;
@@ -136,13 +185,32 @@
     background-color: var(--search-bg);
 }
 
-
+.difftime{
+    overflow: hidden;
+}
 .sliderbox{
+    opacity: 0;
+    height: 0px;
     width: 75%;
-    height: 30px;
     background: var(--bg);
     margin-top: 1rem;
     position: relative;
+    top: -100%;
+    transition: 0.2s ease;
+    right: -100%;
+}
+.timebox input:checked ~ .sliderbox{
+    opacity: 1;
+    height: 30px;
+    top: 0;
+    transition: 0.2s ease;
+    right: 0%;
+}
+.readh2 label::after{
+    content: " ▾";
+}
+.form input:checked ~ .readh2 label::after{
+    content: " ▴";
 }
 .num{
     width: 99%;
