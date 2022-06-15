@@ -1,14 +1,14 @@
 const color_set = [
-    "#C0d763",
-    "#6388C0",
-    "#63C083",
-    "#6388C0",
-    "#C06363",
-    "#C0d763",
-    "#6388C0",
-    "#63C083",
-    "#6388C0",
-    "#C06363",
+    "var(--tag1)",
+    "var(--tag2)",
+    "var(--tag3)",
+    "var(--tag4)",
+    "var(--tag1)",
+    "var(--tag2)",
+    "var(--tag3)",
+    "var(--tag4)",
+    "var(--tag1)",
+    "var(--tag2)",
 ];
 
 function hashCode(str) {

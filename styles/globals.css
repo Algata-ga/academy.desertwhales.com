@@ -18,7 +18,10 @@ html {
     --nav: #000;
     --nav-text: #fff;
     --hamburger: #000;
-
+    --tag1: #494949;
+    --tag2: #445e8f;
+    --tag3: #2a5e8f;
+    --tag4: #673c81;
 }
 
 html[data-theme="dark"] {
@@ -37,6 +40,10 @@ html[data-theme="dark"] {
     --nav: #000;
     --nav-text: #fff;
     --hamburger: #c89d65;
+    --tag1: #6383c0;
+    --tag2: #70c063;
+    --tag3: #9d63c0;
+    --tag4: #959595;
 }
 
 html.theme-transition,
@@ -65,4 +72,35 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+.swiper{
+    width: min(70rem,100%);
+    height: 38vh ;
+    max-height: 40vh;
+}
+.swiper-slide{
+    width: 100%;
+    height: 100% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.swiper-slide span image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 80/45;
+
+}
+
+@media screen and (max-width: 768px){
+    .swiper{
+        height: auto ;
+    }
+    .swiper-slide{
+        width: min(70rem,100%);
+        min-height: 25vh;
+        max-height: 28vh;
+    }
 }
