@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { Container } from "react-bootstrap";
+import Ad from "../components/Ad";
 import ArticleCard from "../components/ArticleCard";
 import Landing from "../components/Landing";
 import style from "../styles/Index.module.css";
@@ -43,6 +44,7 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                     </div>
                 </div>
             </div>
+            <Ad />
             <div className={style.tag}>
                 <div className={style.tagscontain}>
                     {tags.slice(0, 6).map((x) => (
@@ -80,6 +82,7 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                     </div>
                 </div>
             ))}
+            <Ad />
         </div>
     );
 }

@@ -1,0 +1,19 @@
+.adsec{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+}
+.adcontain{
+    width: min(70rem,95%);
+    background: rebeccapurple;
+}
+
+
+@media screen and (max-width: 992px){
+    .adcontain{
+        width: min( 70rem , 95% );
+        background: rgb(93, 85, 100);
+    }
+}
