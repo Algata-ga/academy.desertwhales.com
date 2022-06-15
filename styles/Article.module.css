@@ -74,12 +74,16 @@
     align-items: center;
     justify-content: center;
     position: sticky;
-    top: 70px;
-    margin-top: 1rem;
-
+    top: 86px;
+    flex-direction: column;
     z-index: 2;
 }
 
+.selection{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 /*
 .slider{
     position: relative;
@@ -136,8 +140,8 @@
 .article h1 {
     font-style: normal;
     font-weight: 700;
-    font-size: 45.7px;
-    line-height: 69px;
+    font-size: 40.7px;
+    line-height: 65px;
 }
 .article h6{
     text-align: right;
@@ -152,6 +156,7 @@ text-align: center;
 
 .article p {
     font-style: normal;
+    font-size: 1rem;
 }
 
 .article blockquote p {
@@ -165,7 +170,48 @@ text-align: center;
 .article a:hover {
     color: gold;
 }
+.article ul,.article ol{
+    padding: 20px;
+    margin: 0;
+}
+.article ul img,.article ol img{
+    padding: 10px 0;
+}
 
+@media screen and (min-width: 768px) {
+    .font1 h1{
+        font-size: 50.7px !important;
+        line-height: 72px !important;
+    }
+    
+    .font1 p,.font1 ul{
+        font-style: normal;
+        font-size: 1.2rem !important;
+    }
+    
+    .font1 blockquote p {
+        font-weight: bolder;
+    }
+    
+    .font2 h1{
+        font-size: 55.7px !important;
+        line-height: 75px !important;
+    }
+    
+    .font2 p,.font2 ul{
+        font-style: normal;
+        font-size: 1.5rem !important;
+    }
+    
+    .font2 blockquote p {
+        font-weight: bolder;
+    }
+}
+@media screen and (max-width: 768px){
+    .sliderbox {
+        top: 75px;
+    }
+}
 
 @media screen and (max-width: 576px) {
     .containbox {

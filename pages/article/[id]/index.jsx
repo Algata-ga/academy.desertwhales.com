@@ -3,12 +3,16 @@ import { useRef } from "react";
 import useCustomScroll from "../../../hooks/useCustomScroll";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
+import { FaCopy } from "react-icons/fa"
 
 
 const Article = ({ article }) => {
     const sliderRef = useRef();
     const [handleSliderScroll, handleSliderMouseOut] =
         useCustomScroll(sliderRef);
+    const [font, setFont] = useState(0)
+    const [copied, setCopied] = useState(false);
 
     return (
         <>
@@ -32,8 +36,38 @@ const Article = ({ article }) => {
                             onChange={handleSliderScroll}
                             onMouseOut={handleSliderMouseOut}
                         />
+
                     </div>
-                    <article className={style.article}>
+                    <article className={style.article + " " +  style.font0 }>
+                        <div className={style.selection}>
+
+                            <div>
+                            <label htmlFor="font1">small</label>
+                            <input type="radio" id="font1" name="font" onClick={(font)=>setFont(0)}/>
+                            </div>
+                            <div>
+                            <label htmlFor="font2">medium</label>
+                            <input type="radio" id="font2" name="font" onClick={(font)=>setFont(1)}/>
+                            </div>
+                            <div>
+                            <label htmlFor="font3">large</label>
+                            <input type="radio" id="font3" name="font" onClick={(font)=>setFont(2)}/>
+                            </div>
+                            <div className={style.copy} onClick={()=>{
+                                {
+                                    const el = document.createElement('input');
+                                    el.value = window.location.href;
+                                    document.body.appendChild(el);
+                                    el.select();
+                                    document.execCommand('copy');
+                                    document.body.removeChild(el);
+                                    setCopied(true);
+                                  }
+                            }}>
+                                {!copied ? "<FaCopy />" : "Copied!"} 
+                            </div>
+                            
+                        </div>
                         <div className={style.imgbox}>
                             <Image src={article.banner} layout="fill" placeholder="blur" blurDataURL={article.banner} alt="banner" />
                         </div>

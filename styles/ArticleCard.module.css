@@ -185,6 +185,108 @@
     
     }
 }
+
+@media screen and (max-width: 768px) {
+    .cardlist {
+        background: var(--card-bg);
+        box-shadow: var(--card-stroke);
+        border: 0.2px solid var(--card-border);
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        padding: 0 10px;
+        border-radius: 15px;
+        width: 93%;
+    }
+    
+    
+    .cardlist .imgbox {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+    
+    .cardlist span {
+        position: relative !important;
+        display: flex !important;
+    }
+    
+    .cardlist img {
+        width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
+        object-fit: contain !important;
+        aspect-ratio: 16/9;
+    }
+    
+    .cardlist .img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        object-fit: contain;
+    }
+    
+    .cardlist a {
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+    }
+    
+    .cardlist a p {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(3, 1fr);
+        font-weight: 400;
+    }
+    
+    .cardlist a p span {
+        margin: 10px 2px;
+        padding: 0 5px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    
+    .cardlist a h6 {
+        position: relative;
+        bottom: 0%;
+        text-align: end;
+        right: 10px;
+    }
+    
+    .cardlist h1,
+    .cardlist h2,
+    .cardlist h3,
+    .cardlist h4,
+    .cardlist h5,
+    .cardlist h6,
+    .cardlist p {
+        padding: 0;
+        margin: 10px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .cardlist h4{
+        max-width: 27ch;
+        font-weight: 500;
+    }
+    
+    .cardlist .h5 {
+        position: absolute;
+        bottom: 0;
+        text-transform: uppercase;
+        left: 10px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center
+    }
+}
 @media screen and (max-width: 400px) {
     .card a p {
         grid-template-columns: repeat(2, 1fr);

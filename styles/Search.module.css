@@ -118,6 +118,7 @@
 }
 .searchboxlist{
     display: grid;
+    justify-items: center;
     grid-template-columns: 1fr;
 }
 
@@ -247,8 +248,13 @@
     }  
 }
 @media screen and (max-width: 768px) {
-    .searchbox{
-        grid-template-columns: repeat(1, 100%);
+    .viewbox{
+        display: none;
+    }
+    .searchbox,.searchboxlist{
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(1, 450px);
     }  
     .difftime{
         display: grid;
