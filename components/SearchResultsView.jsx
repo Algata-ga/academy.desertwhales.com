@@ -7,15 +7,14 @@ const SearchResultsView = ({ data }) => {
 
     return (
         <div>
-            <div className={style.viewbox}>
-                <h4>view | </h4>
-            <button onClick={() => setListView(() => !isListView)}>
-                {isListView ? "Card" : "List"}
-            </button>
-            <button onClick={() => setListView(() => !isListView)}>
-                {isListView ? "Card" : "List"}
-            </button>
-            </div>
+            {window.matchMedia("(min-width:768px)").matches && (
+                <div className={style.viewbox}>
+                    <h4>view | </h4>
+                    <button onClick={() => setListView(() => !isListView)}>
+                        {isListView ? "Card" : "List"}
+                    </button>
+                </div>
+            )}
             <div className={isListView ? style.searchboxlist : style.searchbox}>
                 {data.length == 0 ? (
                     <h2>Not articles found</h2>
