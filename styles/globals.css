@@ -78,21 +78,18 @@ a {
 
 .swiper{
     width: min(70rem,100%);
-    height: 38vh ;
-    max-height: 40vh;
 }
 .swiper-slide{
-    width: 100%;
-    height: 100% ;
     display: flex;
     align-items: center;
     justify-content: center;
+    aspect-ratio: 8/3;
 }
 .swiper-slide span image{
     width: 100%;
     height: 100%;
     object-fit: contain;
-    aspect-ratio: 80/45;
+    aspect-ratio: 8/3;
 
 }
 
@@ -102,7 +99,13 @@ a {
     }
     .swiper-slide{
         width: min(70rem,100%);
-        min-height: 25vh;
-        max-height: 28vh;
+    }
+}
+@media screen and (max-width: 572px){
+    .swiper{
+        height: auto ;
+    }
+    .swiper-slide{
+        width: min(70rem,100%);
     }
 }
