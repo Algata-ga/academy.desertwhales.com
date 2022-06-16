@@ -42,29 +42,12 @@
     display: none;
 }
 .multi{
-    opacity: 0;
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fill,140px);
-    height: 0px ;
+    height: auto ;
     position: relative;
     transition: 0.2s ease;
-    top: -100%;
-    left: -150%;
-}
-.form input:checked ~ .multi{
-   opacity: 1;
-   height: auto !important;
-   transition: 0.2s ease;
-    left: 0%;
-    top: 0;
-
-}
-.formh2 label::after{
-    content: " ▾";
-}
-.form input:checked ~ .formh2 label::after{
-    content: " ▴";
 }
 .difftime{
     display: grid;
@@ -84,25 +67,10 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    opacity: 0;
-    height: 0px;
-    transition: 0.2s ease;
-    position: relative;
-    top: -100%;
-    left: -100%;
-}
-.diffbox input:checked ~ .levelbox{
     opacity: 1;
     height: auto;
     transition: 0.2s ease;
-    top: 0;
-    left: 0;
-}
-.diffh2 label::after{
-    content: " ▾";
-}
-.form input:checked ~ .diffh2 label::after{
-    content: " ▴";
+    position: relative;
 }
 .readslider{
     display: flex;
@@ -190,28 +158,13 @@
     overflow: hidden;
 }
 .sliderbox{
-    opacity: 0;
+    opacity: 1;
     height: 0px;
     width: 75%;
     background: var(--bg);
     margin-top: 1rem;
     position: relative;
-    top: -100%;
     transition: 0.2s ease;
-    right: -100%;
-}
-.timebox input:checked ~ .sliderbox{
-    opacity: 1;
-    height: 30px;
-    top: 0;
-    transition: 0.2s ease;
-    right: 0%;
-}
-.readh2 label::after{
-    content: " ▾";
-}
-.form input:checked ~ .readh2 label::after{
-    content: " ▴";
 }
 .num{
     width: 99%;
@@ -262,6 +215,80 @@
     }
     .levelbox,.readslider{
         flex-direction: column;
+    }
+    .form input[type="checkbox"]:nth-child(n){
+        display: none;
+    }
+    .multi{
+        opacity: 0;
+        pointer-events: none;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill,140px);
+        height: 0px ;
+        position: relative;
+        transition: 0.2s ease;
+    }
+    .form input:checked ~ .multi{
+       opacity: 1;
+       height: auto !important;
+       transition: 0.2s ease;
+       pointer-events: all;
+    
+    }
+    .formh2 label::after{
+        content: " ▾";
+    }
+    .form input:checked ~ .formh2 label::after{
+        content: " ▴";
+    }
+
+    .levelbox{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        opacity: 0;
+        height: 0px;
+        transition: 0.2s ease-in-out;
+        position: relative;
+        pointer-events: none;
+    }
+    .diffbox input:checked ~ .levelbox{
+        opacity: 1;
+        height: auto;
+        transition: 0.2s ease-in-out;
+        pointer-events: all;
+    }
+    .diffh2 label::after{
+        content: " ▾";
+    }
+    .form input:checked ~ .diffh2 label::after{
+        content: " ▴";
+    }
+
+
+
+    .sliderbox{
+        opacity: 0;
+        pointer-events: none;
+        height: auto;
+        width: 75%;
+        background: var(--bg);
+        margin-top: 1rem;
+        position: relative;
+        transition: 0.2s ease;
+    }
+    .timebox input:checked ~ .sliderbox{
+        opacity: 1;
+        transition: 0.2s ease;
+        pointer-events: all;
+        padding-bottom: 1rem;
+    }
+    .readh2 label::after{
+        content: " ▾";
+    }
+    .form input:checked ~ .readh2 label::after{
+        content: " ▴";
     }
     
 }
