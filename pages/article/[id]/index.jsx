@@ -4,21 +4,30 @@ import useCustomScroll from "../../../hooks/useCustomScroll";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import { FaShare } from "react-icons/fa"
-import { BsFonts } from "react-icons/bs"
-import { ImFontSize } from "react-icons/im"
-import { RiFontSize2 } from "react-icons/ri"
-
-
-
+import { FaShare } from "react-icons/fa";
+import { BsFonts } from "react-icons/bs";
+import { ImFontSize } from "react-icons/im";
+import { RiFontSize2 } from "react-icons/ri";
 
 const Article = ({ article }) => {
     const sliderRef = useRef();
     const [handleSliderScroll, handleSliderMouseOut] =
         useCustomScroll(sliderRef);
-    const [font, setFont] = useState(0)
+
+    const [font, setFont] = useState(0);
+    const getFont = () => {
+        console.log("fuck");
+        switch (font) {
+            case 0:
+                return style.font1;
+            case 1:
+                return style.font2;
+            case 2:
+                return style.font3;
+        }
+    };
+
     const [copied, setCopied] = useState(false);
-    const share = <FaShare />
 
     return (
         <>
@@ -42,49 +51,69 @@ const Article = ({ article }) => {
                             onChange={handleSliderScroll}
                             onMouseOut={handleSliderMouseOut}
                         />
-
                     </div>
-                    <article className={style.article + " " + style.font2}>
-                        <div className={style.selection}>
 
-                            <div className={style.radio}>
-
-
-                                <input type="radio" id="font1" name="font" onClick={(font) => setFont(0)} />
-                                <label htmlFor="font1"><RiFontSize2 />
-                                </label>
-                            </div>
-                            <div className={style.radio}>
-
-
-                                <input type="radio" id="font2" name="font" onClick={(font) => setFont(1)} />
-                                <label htmlFor="font2"><BsFonts />
-                                </label>
-                            </div>
-                            <div className={style.radio}>
-
-
-                                <input type="radio" id="font3" name="font" onClick={(font) => setFont(2)} />
-                                <label htmlFor="font3"><ImFontSize />
-                                </label>
-                            </div>
-                            <div className={style.copy} onClick={() => {
+                    <div className={style.selection}>
+                        <div className={style.radio}>
+                            <input
+                                type="radio"
+                                id="font1"
+                                name="font"
+                                onClick={() => setFont(0)}
+                            />
+                            <label htmlFor="font1">
+                                <RiFontSize2 />
+                            </label>
+                        </div>
+                        <div className={style.radio}>
+                            <input
+                                type="radio"
+                                id="font2"
+                                name="font"
+                                onClick={() => setFont(1)}
+                            />
+                            <label htmlFor="font2">
+                                <BsFonts />
+                            </label>
+                        </div>
+                        <div className={style.radio}>
+                            <input
+                                type="radio"
+                                id="font3"
+                                name="font"
+                                onClick={() => setFont(2)}
+                            />
+                            <label htmlFor="font3">
+                                <ImFontSize />
+                            </label>
+                        </div>
+                        <div
+                            className={style.copy}
+                            onClick={() => {
                                 {
-                                    const el = document.createElement('input');
+                                    const el = document.createElement("input");
                                     el.value = window.location.href;
                                     document.body.appendChild(el);
                                     el.select();
-                                    document.execCommand('copy');
+                                    document.execCommand("copy");
                                     document.body.removeChild(el);
                                     setCopied(true);
+                                    setTimeout(() => setCopied(false), 2500);
                                 }
-                            }}>
-                                {!copied ? <FaShare /> : "Copied!"}
-                            </div>
-
+                            }}
+                        >
+                            {!copied ? <FaShare /> : "Copied!"}
                         </div>
+                    </div>
+                    <article className={style.article + " " + getFont()}>
                         <div className={style.imgbox}>
-                            <Image src={article.banner} layout="fill" placeholder="blur" blurDataURL={article.banner} alt="banner" />
+                            <Image
+                                src={article.banner}
+                                layout="fill"
+                                placeholder="blur"
+                                blurDataURL={article.banner}
+                                alt="banner"
+                            />
                         </div>
                         <h1>{article.title}</h1>
                         <h6>{article.read_time} mins</h6>
