@@ -9,7 +9,6 @@ import style from "../styles/Index.module.css";
 import getShuffledArray from "../utils/shuffleArray";
 import tag_color from "../utils/tag_color";
 
-
 export default function Home({ latest_articles, tagged_feed, tags }) {
     return (
         <div>
@@ -48,12 +47,16 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
             <div className={style.tag}>
                 <div className={style.tagscontain}>
                     {tags.slice(0, 6).map((x) => (
-                        <Link href={`/search?tag=${x.name}`}>
-                        <a>
-                        <span key={x.name} style={{
-                                    color: `${tag_color(x.name)}`,
-                                }}>{x.name}</span>
-                        </a>
+                        <Link href={`/search?tag=${x.name}`} key={x.name}>
+                            <a>
+                                <span
+                                    style={{
+                                        color: `${tag_color(x.name)}`,
+                                    }}
+                                >
+                                    {x.name}
+                                </span>
+                            </a>
                         </Link>
                     ))}
                 </div>
