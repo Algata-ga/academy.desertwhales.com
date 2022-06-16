@@ -39,6 +39,8 @@
     height: 100%;
     position: relative;
     object-fit: contain;
+    aspect-ratio: 16/9;
+
 }
 
 .card a {
@@ -54,6 +56,8 @@
     justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
     font-weight: 400;
+    height: 48px;
+    overflow: scroll;
 }
 
 .card a p span {
@@ -240,6 +244,8 @@
         justify-content: space-between;
         grid-template-columns: repeat(3, 1fr);
         font-weight: 400;
+        height: 43px;
+        overflow: auto;    
     }
     
     .cardlist a p span {
