@@ -16,7 +16,6 @@ const Article = ({ article }) => {
 
     const [font, setFont] = useState(0);
     const getFont = () => {
-        console.log("fuck");
         switch (font) {
             case 0:
                 return style.font1;
@@ -54,41 +53,44 @@ const Article = ({ article }) => {
                     </div>
 
                     <div className={style.selection}>
-                        <div className={style.radio}>
-                            <input
-                                type="radio"
-                                id="font1"
-                                name="font"
-                                onClick={() => setFont(0)}
-                            />
-                            <label htmlFor="font1">
-                                <RiFontSize2 />
-                            </label>
-                        </div>
-                        <div className={style.radio}>
-                            <input
-                                type="radio"
-                                id="font2"
-                                name="font"
-                                onClick={() => setFont(1)}
-                            />
-                            <label htmlFor="font2">
-                                <BsFonts />
-                            </label>
-                        </div>
-                        <div className={style.radio}>
-                            <input
-                                type="radio"
-                                id="font3"
-                                name="font"
-                                onClick={() => setFont(2)}
-                            />
-                            <label htmlFor="font3">
-                                <ImFontSize />
-                            </label>
+
+                        <div className={style.radios}>
+                            <div className={style.radio}>
+                                <input
+                                    type="radio"
+                                    id="font1"
+                                    name="font"
+                                    onClick={() => setFont(2)}
+                                />
+                                <label htmlFor="font1">
+                                    <RiFontSize2 />
+                                </label>
+                            </div>
+                            <div className={style.radio}>
+                                <input
+                                    type="radio"
+                                    id="font2"
+                                    name="font"
+                                    onClick={() => setFont(0)}
+                                />
+                                <label htmlFor="font2">
+                                    <BsFonts />
+                                </label>
+                            </div>
+                            <div className={style.radio}>
+                                <input
+                                    type="radio"
+                                    id="font3"
+                                    name="font"
+                                    onClick={() => setFont(1)}
+                                />
+                                <label htmlFor="font3">
+                                    <ImFontSize />
+                                </label>
+                            </div>
                         </div>
                         <div
-                            className={style.copy}
+                            className={style.share}
                             onClick={() => {
                                 {
                                     const el = document.createElement("input");

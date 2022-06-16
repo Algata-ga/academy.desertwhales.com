@@ -181,6 +181,9 @@
     .header a{
         color: var(--nav-text);
     }
+    .nav {
+        padding: 5px 0;
+    }
     .logoname {
         display: none;
     }

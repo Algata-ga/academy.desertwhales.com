@@ -110,9 +110,35 @@
         line-height: 30px;
         z-index: 1;
     }
+    .vector1 {
+        position: absolute;
+        width: 250px;
+        height: 400px;
+        left: -10px;
+        bottom: -150px;
+        z-index: 0;
+    }
     .vector2 {
-        width: 200px;
-        height: 250px;
+        width: 250px;
+        height: 275px;
         top: 0;
+        right: 0;
+    }
+    
+}
+@media screen and (max-width: 400px) {
+    .vector1 {
+        position: absolute;
+        width: 250px;
+        height: 400px;
+        left: -10px;
+        bottom: -250px;
+        z-index: 0;
+    }
+    .vector2 {
+        width: 150px;
+        height: 200px;
+        top: 0;
+        right: 0;
     }
 }
