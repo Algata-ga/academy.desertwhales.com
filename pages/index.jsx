@@ -45,6 +45,10 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
             </div>
             <Ad />
             <div className={style.tag}>
+                <div className={style.tagfilter}>
+                <div className={style.heading}>
+                    <h6>Filters</h6>
+                </div>
                 <div className={style.tagscontain}>
                     {tags.slice(0, 6).map((x) => (
                         <Link href={`/search?tag=${x.name}`} key={x.name}>
@@ -59,6 +63,7 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                             </a>
                         </Link>
                     ))}
+                </div>
                 </div>
             </div>
             {tagged_feed.map((tag) => (

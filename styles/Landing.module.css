@@ -83,7 +83,7 @@
     }
     .contain h1 {
         width: 50%;
-        font-size: 2.5rem;
+        font-size: 3rem;
         line-height: 60px;
         z-index: 1;
         text-align: left;
@@ -100,15 +100,18 @@
 }
 @media screen and (max-width: 576px) {
     .contain h1 {
-        font-size: 2rem;
+        font-size: 2.9rem;
         line-height: 50px;
         z-index: 1;
+        padding: 0 2%;
     }
 
     .contain h5 {
         font-size: 19.7px;
         line-height: 30px;
         z-index: 1;
+        padding: 0 2%;
+
     }
     .vector1 {
         position: absolute;
@@ -127,6 +130,9 @@
     
 }
 @media screen and (max-width: 400px) {
+    .contain h1 {
+        font-size: 2rem;
+    }
     .vector1 {
         position: absolute;
         width: 250px;
