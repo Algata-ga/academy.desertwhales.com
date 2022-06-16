@@ -50,19 +50,19 @@
 }
 
 .slider::-moz-range-progress {
-    background-color: #000;
+    background: var(--text);
 }
 
 .slider::-moz-range-track {
-    background-color: white;
+    background: var(--slider);
 }
 
 .slider::-ms-fill-lower {
-    background-color: #000;
+    background: var(--text);
 }
 
 .slider::-ms-fill-upper {
-    background-color: white;
+    background: var(--slider);
 }
 
 
@@ -83,7 +83,34 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding-bottom: 1rem;
+    color: var(--universal1);
 }
+
+.radio{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.selection input[type="radio"] {
+    display: none;
+  }
+  
+  .selection label {
+    display: inline-block;
+    font-family: Arial;
+    font-size: 32px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .selection input[type="radio"]:checked  ~ label {
+    background: var(--text)
+  }
 /*
 .slider{
     position: relative;
@@ -184,7 +211,7 @@ text-align: center;
         line-height: 72px !important;
     }
     
-    .font1 p,.font1 ul{
+    .font1 p,.font1 ul,.font1 ol,.font1 a{
         font-style: normal;
         font-size: 1.2rem !important;
     }
@@ -198,7 +225,7 @@ text-align: center;
         line-height: 75px !important;
     }
     
-    .font2 p,.font2 ul{
+    .font2 p,.font2 ul,.font2 ol,.font2 a{
         font-style: normal;
         font-size: 1.5rem !important;
     }

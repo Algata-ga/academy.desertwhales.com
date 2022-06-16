@@ -273,4 +273,9 @@
         display: grid;
         grid-template-columns: 100%;
     }  
+    .searchbox,.searchboxlist{
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(1, 100%);
+    }  
 }

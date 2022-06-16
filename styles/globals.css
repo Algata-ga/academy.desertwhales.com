@@ -22,6 +22,7 @@ html {
     --tag2: #445e8f;
     --tag3: #2a5e8f;
     --tag4: #673c81;
+    --slider: white;
 }
 
 html[data-theme="dark"] {
@@ -44,6 +45,7 @@ html[data-theme="dark"] {
     --tag2: #70c063;
     --tag3: #9d63c0;
     --tag4: #959595;
+    --slider:black;
 }
 
 html.theme-transition,
