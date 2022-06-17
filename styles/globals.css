@@ -59,7 +59,7 @@ html.theme-transition *:after {
 html,
 body {
     padding: 0;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;

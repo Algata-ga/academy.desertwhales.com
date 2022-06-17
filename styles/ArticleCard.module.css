@@ -52,12 +52,20 @@
 }
 
 .card a p {
+    /*
+    display: flex;
+    flex-wrap: wrap;
+    */
     display: grid;
     justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
+    
+    justify-content: space-evenly;
     font-weight: 400;
     height: 48px;
-    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
 }
 
 .card a p span {
@@ -177,6 +185,7 @@
     .cardlist a p{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        height: auto;
 
     }
     .cardlist a p span {
