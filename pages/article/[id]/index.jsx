@@ -82,7 +82,7 @@ const Article = ({ article }) => {
                                     type="radio"
                                     id="font3"
                                     name="font"
-                                    onClick={() => setFont(1)}
+                                     onClick={() => setFont(1)}
                                 />
                                 <label htmlFor="font3">
                                     <ImFontSize />

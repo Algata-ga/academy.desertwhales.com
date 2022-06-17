@@ -107,7 +107,8 @@
 
 @media screen and (max-width: 400px) {
     .articlebox {
-        grid-template-columns: repeat(1, 100%);
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
     }
     .tagscontain {
         justify-items: center;

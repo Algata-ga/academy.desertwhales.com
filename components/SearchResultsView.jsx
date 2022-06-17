@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ArticleCard from "./ArticleCard";
 import style from "../styles/Search.module.css";
+import { MdViewModule,MdViewList } from "react-icons/md"
 
 const SearchResultsView = ({ data }) => {
     const [isListView, setListView] = useState(false);
@@ -11,7 +12,7 @@ const SearchResultsView = ({ data }) => {
                 <div className={style.viewbox}>
                     <h4>view | </h4>
                     <button onClick={() => setListView(() => !isListView)}>
-                        {isListView ? "Card" : "List"}
+                        {isListView ? <MdViewModule /> : <MdViewList />}
                     </button>
                 </div>
             

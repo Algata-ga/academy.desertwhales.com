@@ -216,7 +216,7 @@
 
 @media screen and (min-width: 768px) {
     .font1 h1{
-        font-size: 50.7px !important;
+        font-size: 46.7px !important;
         line-height: 72px !important;
     }
     
@@ -230,13 +230,13 @@
     }
     
     .font2 h1{
-        font-size: 55.7px !important;
+        font-size: 50.7px !important;
         line-height: 75px !important;
     }
     
     .font2 p,.font2 ul,.font2 ol,.font2 a{
         font-style: normal;
-        font-size: 1.5rem !important;
+        font-size: 1.35rem !important;
     }
     
     .font2 blockquote p {

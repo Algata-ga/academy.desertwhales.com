@@ -182,9 +182,13 @@
     justify-content: center;
 }
 .viewbox button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
+    font-size: 2.2rem;
     background: var(--bg);
-    color: var(--text);
+    color: var(--universal1);
     margin: 10px;
 }
 .viewbox h4{

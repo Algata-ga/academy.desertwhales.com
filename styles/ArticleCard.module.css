@@ -50,19 +50,23 @@
     width: 100%;
     position: relative;
 }
+.card a{
+    font-size: 2.2rem;
+}
 
 .card a p {
-    /*
-    display: flex;
-    flex-wrap: wrap;
-    */
-    display: grid;
+    /*display: grid;
     justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
     
-    justify-content: space-evenly;
+    */display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
     font-weight: 400;
-    height: 48px;
+    font-size: .8rem;
+
+    height: auto;
     overflow-y: hidden;
     overflow-x: hidden;
 
@@ -70,7 +74,7 @@
 
 .card a p span {
     margin: 10px 2px;
-    padding: 0 5px;
+    padding: 0 8px;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -183,9 +187,15 @@
         right: 10px;
     }
     .cardlist a p{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+       /* display: grid;
+        grid-template-columns: repeat(3, 1fr);*/
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+
         height: auto;
+        justify-content: flex-end;
+
 
     }
     .cardlist a p span {
@@ -220,16 +230,19 @@
         overflow: hidden;
     }
     
-    .cardlist span {
+    .cardlist .imgbox span {
         position: relative !important;
         display: flex !important;
+        width: 100% !important;
+        height: 100% !important;
+        
     }
     
     .cardlist img {
         width: 100% !important;
         height: 100% !important;
         position: relative !important;
-        object-fit: contain !important;
+        object-fit: cover !important;
         aspect-ratio: 16/9;
     }
     
@@ -249,12 +262,16 @@
     }
     
     .cardlist a p {
-        display: grid;
+        /*display: grid;
         justify-content: space-between;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);*/
         font-weight: 400;
-        height: 43px;
+        height: auto;
         overflow: auto;    
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: flex-end;
+
     }
     
     .cardlist a p span {
@@ -301,9 +318,16 @@
         display: flex;
         align-items: center
     }
+    
 }
 @media screen and (max-width: 400px) {
     .card a p {
-        grid-template-columns: repeat(2, 1fr);
+        /*
+        grid-template-columns: repeat(2, 1fr);*/
+        height: auto;
+        justify-content: flex-end;
+    }
+    .card h4{
+        font-size: 1.2rem;
     }
 }
