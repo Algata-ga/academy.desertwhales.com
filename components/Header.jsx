@@ -46,13 +46,22 @@ const tags = [
     { name: "Desertwhales" },
 ];
 const Header = () => {
-    const [theme, setTheme] = useState(0);
+    const [theme, setTheme] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
-        setGlobalTheme(theme);
+        if (theme !== null) setGlobalTheme(theme);
     }, [theme]);
-
+    useEffect(() => {
+        if (typeof window === undefined) return;
+        let _theme = localStorage.getItem("theme_id");
+        if (_theme === "null") {
+            _theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? 1
+                : 0;
+        }
+        setTheme(_theme);
+    }, []);
     const [sub, setSub] = useState(true);
     const [nav, setNav] = useState(true);
     const themes = [
