@@ -5,7 +5,7 @@ import { useRef } from "react";
 import useCustomScroll from "../../../hooks/useCustomScroll";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import { BsFonts } from "react-icons/bs";
 import { ImFontSize } from "react-icons/im";
@@ -27,6 +27,8 @@ const Article = ({ article }) => {
                 return style.font3;
         }
     };
+
+    useEffect(() => {}, []);
 
     const [copied, setCopied] = useState(false);
 
@@ -62,6 +64,7 @@ const Article = ({ article }) => {
                                     id="font1"
                                     name="font"
                                     onClick={() => setFont(2)}
+                                    checked={2 === font}
                                 />
                                 <label htmlFor="font1">
                                     <RiFontSize2 />
@@ -73,6 +76,7 @@ const Article = ({ article }) => {
                                     id="font2"
                                     name="font"
                                     onClick={() => setFont(0)}
+                                    checked={0 === font}
                                 />
                                 <label htmlFor="font2">
                                     <BsFonts />
@@ -84,6 +88,7 @@ const Article = ({ article }) => {
                                     id="font3"
                                     name="font"
                                     onClick={() => setFont(1)}
+                                    checked={1 === font}
                                 />
                                 <label htmlFor="font3">
                                     <ImFontSize />
@@ -152,6 +157,7 @@ export const getServerSideProps = async (context) => {
             }
         },
     });
+    console.log(body);
 
     const html_embeds = await Promise.all(
         urls.map((x) =>
