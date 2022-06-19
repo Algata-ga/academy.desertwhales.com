@@ -1,4 +1,6 @@
 import style from "../../../styles/Article.module.css";
+import ReactDOMServer from "react-dom/server";
+import parse from "html-react-parser";
 import { useRef } from "react";
 import useCustomScroll from "../../../hooks/useCustomScroll";
 import Head from "next/head";
@@ -53,7 +55,6 @@ const Article = ({ article }) => {
                     </div>
 
                     <div className={style.selection}>
-
                         <div className={style.radios}>
                             <div className={style.radio}>
                                 <input
@@ -82,7 +83,7 @@ const Article = ({ article }) => {
                                     type="radio"
                                     id="font3"
                                     name="font"
-                                     onClick={() => setFont(1)}
+                                    onClick={() => setFont(1)}
                                 />
                                 <label htmlFor="font3">
                                     <ImFontSize />
@@ -139,7 +140,44 @@ export const getServerSideProps = async (context) => {
     if (response.status === 404) {
         return { notFound: true };
     }
-    const article = await response.json();
+    const og_article = await response.json();
+    const { body, ...rest_of_article } = { ...og_article };
+
+    //this is not good, make a npm package
+    let urls = [];
+    parse(body, {
+        replace: (x) => {
+            if (x.name === "oembed" && x.type === "tag") {
+                urls.push(x.children[0].attribs.href);
+            }
+        },
+    });
+
+    const html_embeds = await Promise.all(
+        urls.map((x) =>
+            fetch(`https://${process.env.IFRAMELY_URL}/oembed?url=${x}`)
+                .then((x) => x.json())
+                .then((x) => x.html)
+        )
+    );
+    let index = -1;
+    console.log(urls);
+    console.log(html_embeds);
+    const parsed_body = parse(body, {
+        replace: (x) => {
+            if (x.name === "oembed" && x.type === "tag") {
+                index += 1;
+                console.log(x.children[0].attribs.href);
+                console.log(html_embeds[index]);
+                return parse(html_embeds[index]);
+            }
+            return x;
+        },
+    });
+    const article = {
+        ...rest_of_article,
+        body: ReactDOMServer.renderToStaticMarkup(parsed_body),
+    };
     return {
         props: { article },
     };
