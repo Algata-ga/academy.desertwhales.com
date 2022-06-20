@@ -18,7 +18,7 @@ const SearchResultsView = ({ data }) => {
             
             <div className={isListView ? style.searchboxlist : style.searchbox}>
                 {data.length == 0 ? (
-                    <h2>Not articles found</h2>
+                    <h2 className={style.notfound}>Not articles found</h2>
                 ) : (
                     data.map((x) => (
                         <ArticleCard

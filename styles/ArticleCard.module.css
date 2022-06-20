@@ -19,6 +19,7 @@
     height: auto;
     margin-top: 10px;
     overflow: hidden;
+    aspect-ratio: 16/9;
 }
 
 .card span {
