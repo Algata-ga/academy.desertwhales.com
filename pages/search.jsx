@@ -63,6 +63,27 @@ const Search = ({ query, tags, difficulty, initialData }) => {
             });
     }, [router]);
 
+    useEffect(() => {
+        if (window !== undefined) {
+            if (Object.keys(query).length !== 0) {
+                const validPrams = ["title", "tag"];
+                const keys_present = Object.keys(query).filter((x) =>
+                    validPrams.includes(x)
+                );
+                if (keys_present.includes("title")) {
+                    dispatch({ type: "title", value: router.query.title });
+                }
+                if (keys_present.includes("tag")) {
+                    const tag_index = tags
+                        .map((x) => x.name)
+                        .indexOf(query.tag);
+                    if (tag_index !== -1)
+                        dispatch({ type: "tags", value: tags[tag_index].id });
+                }
+            }
+        }
+    }, []);
+
     return (
         <div className={style.search}>
             <div className={style.searchcontain}>
