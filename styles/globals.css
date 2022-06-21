@@ -92,6 +92,9 @@ a {
     aspect-ratio: 8/3;
 
 }
+.swiper-pagination-bullet-active{
+    background: var(--universal1) !important;
+}
 
 @media screen and (max-width: 768px){
     .swiper{
