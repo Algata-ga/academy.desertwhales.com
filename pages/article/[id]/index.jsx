@@ -150,7 +150,6 @@ export const getServerSideProps = async (context) => {
 
     //this is not good, make a npm package
     let urls = [];
-    console.log(typeof body);
     parse(body, {
         replace: (x) => {
             if (x.name === "oembed" && x.type === "tag") {
@@ -171,7 +170,6 @@ export const getServerSideProps = async (context) => {
         replace: (x) => {
             if (x.name === "oembed" && x.type === "tag") {
                 index += 1;
-                console.log(x.children[0].attribs.href);
                 if (typeof html_embeds[index] !== "string") return x;
                 return parse(html_embeds[index]);
             }

@@ -12,7 +12,6 @@ const handler = async (req, res) => {
         };
         return ad;
     });
-    console.log(results);
     res.status(200).json(results);
 };
 

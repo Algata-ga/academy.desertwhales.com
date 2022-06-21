@@ -53,7 +53,6 @@ const Search = ({ query, tags, difficulty, initialData }) => {
 
     const router = useRouter();
     useEffect(() => {
-        console.log(router.query);
         if (Object.keys(router.query).includes("title"))
             dispatch({ type: "title", value: router.query.title });
         if (Object.keys(router.query).includes("tag"))
@@ -64,7 +63,6 @@ const Search = ({ query, tags, difficulty, initialData }) => {
             });
     }, [router]);
 
-    useEffect(() => console.log(filterParams));
     return (
         <div className={style.search}>
             <div className={style.searchcontain}>
@@ -213,7 +211,6 @@ export const getServerSideProps = async ({ query, req, res }) => {
         ? `/search?${query_generator(params)}`
         : "/articles/latest";
 
-    console.log(endpoint);
     const search_results_response = await fetch(
         process.env.BASE_URL + "/api" + endpoint
     );
@@ -224,6 +221,7 @@ export const getServerSideProps = async ({ query, req, res }) => {
             tags,
             difficulty,
             initialData: { search_results, filterParams: params },
+            query,
         },
     };
 };

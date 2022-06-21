@@ -1,6 +1,5 @@
 const handler = async (req, res) => {
     const { id } = req.query;
-    console.log(id);
     const response = await fetch(
         `${process.env.BACKEND_API_URL}/article/${id.replaceAll(
             "_",

@@ -2,7 +2,6 @@ const handler = async (req, res) => {
     const { tag } = req.query;
     const query_params = tag === "latest" ? "" : "?tags=" + tag;
 
-    console.log(tag);
     const response = await fetch(
         `${process.env.BACKEND_API_URL}/feed${query_params}`
     );
