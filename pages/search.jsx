@@ -103,10 +103,10 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                                         style={{
                                             color: `var(--level-${x.name.toLowerCase()})`,
                                             border: `1px solid var(--level-${x.name.toLowerCase()})`,
-                                            background:
+                                            boxShadow:
                                                 filterParams.level === x.id
-                                                    ? "var(--text)"
-                                                    : "var(--bg)",
+                                                    ? ` 0 0 10px var(--level-${x.name.toLowerCase()})`
+                                                    : `var(--bg)`,
                                         }}
                                     >
                                         <label>{x.name}</label>

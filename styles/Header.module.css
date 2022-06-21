@@ -14,7 +14,9 @@
 .header a{
     color: var(--text);
 }
-
+.header a:hover{
+    color: var(--universal1);
+}
 .nav {
     width: min(90rem, 90%);
     display: flex;
@@ -155,7 +157,7 @@
     cursor: pointer;
 }
 .open ul ul li:hover,.close ul ul li:hover{
-    color: grey !important;
+    color: black !important;
 }
 
 .hamburger {
