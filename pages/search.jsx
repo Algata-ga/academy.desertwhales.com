@@ -5,7 +5,7 @@ import { SWRConfig } from "swr";
 import style from "../styles/Search.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useReducer } from "react";
-import { NewtonsCradle } from '@uiball/loaders'
+import { NewtonsCradle } from "@uiball/loaders";
 
 import query_generator from "../utils/query_generator";
 
@@ -19,8 +19,8 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                         state.level === null
                             ? action.value
                             : state.level === action.value
-                                ? null
-                                : action.value,
+                            ? null
+                            : action.value,
                 };
             case "tags":
                 if (state.tags.includes(action.value)) {
@@ -70,7 +70,9 @@ const Search = ({ query, tags, difficulty, initialData }) => {
             <div className={style.searchcontain}>
                 <div className={style.form}>
                     <input type="checkbox" name="mul" id="mul" />
-                    <h2 className={style.formh2}><label htmlFor="mul">Topics </label></h2>
+                    <h2 className={style.formh2}>
+                        <label htmlFor="mul">Topics </label>
+                    </h2>
 
                     <div className={style.multi}>
                         <MultiSelectionButtons
@@ -84,7 +86,9 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                     <div className={style.difftime}>
                         <div className={style.diffbox}>
                             <input type="checkbox" name="lev" id="lev" />
-                            <h2 className={style.diffh2}><label htmlFor="lev"> Level</label></h2>
+                            <h2 className={style.diffh2}>
+                                <label htmlFor="lev"> Level</label>
+                            </h2>
                             <div className={style.levelbox}>
                                 {difficulty.map((x) => (
                                     <span
@@ -112,7 +116,9 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                         </div>
                         <div className={style.timebox}>
                             <input type="checkbox" name="read" id="read" />
-                            <h2 className={style.readh2}><label htmlFor="read"> Reading Time</label></h2>
+                            <h2 className={style.readh2}>
+                                <label htmlFor="read"> Reading Time</label>
+                            </h2>
 
                             <div className={style.sliderbox}>
                                 <div className={style.readslider}>
@@ -123,11 +129,15 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                                         min="0"
                                         max="25"
                                         step="5"
+                                        default="25"
                                         onChange={(e) => {
                                             e.preventDefault();
                                             dispatch({
                                                 type: "reading_time",
-                                                value: e.currentTarget.value,
+                                                value:
+                                                    e.currentTarget.value > 20
+                                                        ? 10000
+                                                        : e.currentTarget.value,
                                             });
                                         }}
                                     />
@@ -149,8 +159,6 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                 </div>
                 <SWRConfig value={initialData.results}>
                     {isLoading ? (
-
-
                         <div className={style.loader}>
                             <NewtonsCradle
                                 size={40}
