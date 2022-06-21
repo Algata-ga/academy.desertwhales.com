@@ -9,7 +9,7 @@ import style from "../styles/Index.module.css";
 import getShuffledArray from "../utils/shuffleArray";
 import tag_color from "../utils/tag_color";
 
-export default function Home({ latest_articles, tagged_feed, tags }) {
+export default function Home({ latest_articles, tagged_feed, tags, adsList }) {
     return (
         <div>
             <Head>
@@ -43,27 +43,27 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                     </div>
                 </div>
             </div>
-            <Ad />
+            <Ad ads={adsList[0]} />
             <div className={style.tag}>
                 <div className={style.tagfilter}>
-                <div className={style.heading}>
-                    <h6>Filters</h6>
-                </div>
-                <div className={style.tagscontain}>
-                    {tags.slice(0, 6).map((x) => (
-                        <Link href={`/search?tag=${x.name}`} key={x.name}>
-                            <a>
-                                <span
-                                    style={{
-                                        color: `${tag_color(x.name)}`,
-                                    }}
-                                >
-                                    {x.name}
-                                </span>
-                            </a>
-                        </Link>
-                    ))}
-                </div>
+                    <div className={style.heading}>
+                        <h6>Filters</h6>
+                    </div>
+                    <div className={style.tagscontain}>
+                        {tags.slice(0, 6).map((x) => (
+                            <Link href={`/search?tag=${x.name}`} key={x.name}>
+                                <a>
+                                    <span
+                                        style={{
+                                            color: `${tag_color(x.name)}`,
+                                        }}
+                                    >
+                                        {x.name}
+                                    </span>
+                                </a>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
             {tagged_feed.map((tag) => (
@@ -90,7 +90,7 @@ export default function Home({ latest_articles, tagged_feed, tags }) {
                     </div>
                 </div>
             ))}
-            <Ad />
+            <Ad ads={adsList[1]} />
         </div>
     );
 }
@@ -122,5 +122,14 @@ export const getServerSideProps = async (context) => {
     const tagged_feed = shuffledTags.slice(0, 5).reduce((prev, cur, i) => {
         return [...prev, { name: cur.name, data: [...tagged_feed_data[i]] }];
     }, []);
-    return { props: { latest_articles, tagged_feed, tags: shuffledTags } };
+
+    response = await fetch(`${process.env.BASE_URL}/api/ads`);
+    const ads = await response.json();
+
+    const adsMid = Math.ceil(ads.length / 2);
+    const adsList = [ads.slice(0, adsMid), ads.slice(adsMid)];
+
+    return {
+        props: { latest_articles, tagged_feed, tags: shuffledTags, adsList },
+    };
 };
