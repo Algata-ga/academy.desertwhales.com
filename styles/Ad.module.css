@@ -7,7 +7,7 @@
 }
 .adcontain{
     width: min(70rem,95%);
-    background: rebeccapurple;
+    background: transparent;
     margin: 2rem 0;
 }
 

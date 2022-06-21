@@ -28,7 +28,7 @@ const Ad = ({ ads }) => {
                 >
                     {ads.map((x) => (
                         <SwiperSlide key={x.title}>
-                            <Image src={x.image} alt={x.title} layout="fill" />
+                            <Image src={x.image} alt={x.title} placeholder="blur" blurDataURL={x.image} layout="fill" />
                         </SwiperSlide>
                     ))}
                 </Swiper>

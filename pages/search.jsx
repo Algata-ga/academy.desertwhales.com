@@ -169,7 +169,9 @@ const Search = ({ query, tags, difficulty, initialData }) => {
                     ) : data.length !== 0 ? (
                         <SearchResultsView data={data} />
                     ) : (
-                        <h2>No results found</h2>
+                        <div className={style.notfound}>
+                            <h2>No results found</h2>
+                        </div>
                     )}
                 </SWRConfig>
             </div>

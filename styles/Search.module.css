@@ -30,7 +30,7 @@
 }
 .notfound{
     width: 100%;
-    height: 25vh;
+    min-height: 24vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,7 +307,9 @@
     
 }
 @media screen and (max-width: 576px) {
-    
+    .notfound{
+        min-height: 25vh;
+    }
 }
 @media screen and (max-width: 400px) {
     .searchboxlist{
