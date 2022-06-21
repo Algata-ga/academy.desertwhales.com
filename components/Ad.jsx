@@ -27,7 +27,7 @@ const Ad = ({ ads }) => {
                     className="mySwiper"
                 >
                     {ads.map((x) => (
-                        <SwiperSlide>
+                        <SwiperSlide key={x.title}>
                             <Image src={x.image} alt={x.title} layout="fill" />
                         </SwiperSlide>
                     ))}
