@@ -78,7 +78,7 @@ const Header = () => {
                                 src={logo}
                                 className={style.imge}
                                 alt="header"
-                                height="0"
+                                placeholder="blur" blurDataURL={logo}
                             />
 
                             <div className={style.logoname}>
@@ -133,7 +133,8 @@ const Header = () => {
                                 >
                                     <li
                                         style={{ color: tag_color(x.name) }}
-                                        onClick={() => setSub(true)}
+                                        onClick={() => {setSub(true);
+                                             setNav(!nav)}}
                                     >
                                         {x.name}
                                     </li>

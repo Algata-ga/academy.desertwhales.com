@@ -14,7 +14,7 @@ const Footer = () => {
         <footer className={style.footerbg}>
             <div className={style.footer}>
                 <div className={style.logo}>
-                    <Image fluid="true" src={logo} alt="logo" />
+                    <Image fluid="true" src={logo} placeholder="blur" blurDataURL={logo} alt="logo" />
                 </div>
                 <div className={style.quicklink}>
                     <h6>Quick Links</h6>

@@ -8,7 +8,7 @@ const ArticleCard = ({ article, list }) => {
         <div className={list === true ? style.cardlist : style.card}>
             <a href={`/article/${title.replaceAll(" ", "_")}`}>
                 <div className={style.imgbox}>
-                    <Image className={style.img} height="300" width={200} src={banner} placeholder="blur" blurDataURL={banner} layout="fill" alt="banner img" />
+                    <Image className={style.img} src={banner} placeholder="blur" blurDataURL={banner} layout="fill" alt="banner img" />
                 </div>
                 <div className={style.content}>
                     <h4>{title}</h4>
