@@ -107,7 +107,7 @@ const Header = () => {
                     <ul>
                         <Link href="/search">
                             <a>
-                                <li className="">Explore</li>
+                                <li className="" onClick={() => setNav(!nav)}>Explore</li>
                             </a>
                         </Link>
                         <li
