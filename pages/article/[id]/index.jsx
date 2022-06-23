@@ -1,6 +1,6 @@
 import style from "../../../styles/Article.module.css";
 import ReactDOMServer from "react-dom/server";
-import parse from "html-react-parser";
+import parse, { domToReact } from "html-react-parser";
 import { useRef } from "react";
 import useCustomScroll from "../../../hooks/useCustomScroll";
 import Head from "next/head";
@@ -166,20 +166,29 @@ export const getServerSideProps = async (context) => {
         )
     );
     let index = -1;
+
     const parsed_body = parse(body, {
+        htmlparser2: {
+            xmlMode: true,
+        },
         replace: (x) => {
             if (x.name === "oembed" && x.type === "tag") {
                 index += 1;
-                if (typeof html_embeds[index] !== "string") return x;
-                return parse(html_embeds[index]);
+                if (typeof html_embeds[index] !== "string") {
+                    return x;
+                }
+                const parsed = parse(`<div>${html_embeds[index]}</div>`);
+                return parsed;
             }
             return x;
         },
     });
+
     const article = {
         ...rest_of_article,
         body: ReactDOMServer.renderToStaticMarkup(parsed_body),
     };
+
     return {
         props: { article },
     };
