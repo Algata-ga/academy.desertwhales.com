@@ -1,46 +1,37 @@
-import { useState, useLayoutEffect } from "react";
-
-const scrollPercentageToHeight = (percentage) =>
-    (percentage / 100) *
-    (document.documentElement.offsetHeight -
-        document.documentElement.clientHeight);
-
-const scrollHeighttoPercentage = (height) =>
-    (height /
-        (document.documentElement.offsetHeight -
-            document.documentElement.clientHeight)) *
-    100;
+import { useEffect } from "react";
 
 const useCustomScroll = (scrollSliderRef) => {
     let scrolledByCustomSlider = false;
-    const [scrollPercentage, setScrollPercentage] = useState(0);
 
     const handleWindowScroll = (e) => {
         if (!e) return;
         if (scrolledByCustomSlider === true) return;
         scrolledByCustomSlider = false;
+        const scroll_percentage =
+            (window.scrollY /
+                (document.documentElement.offsetHeight -
+                    document.documentElement.clientHeight)) *
+            100;
 
-        setScrollPercentage(scrollHeighttoPercentage(window.scrollY));
+        if (scrollSliderRef.current !== null)
+            scrollSliderRef.current.value = scroll_percentage;
     };
 
     const handleSliderScroll = (e) => {
         const scroll_percentage = e.target.value;
         scrolledByCustomSlider = true;
-
-        setScrollPercentage(scroll_percentage);
+        const scroll_y =
+            (scroll_percentage / 100) *
+            (document.documentElement.offsetHeight -
+                document.documentElement.clientHeight);
+        window.scroll(0, scroll_y);
     };
 
     const handleSliderMouseOut = () => {
         scrolledByCustomSlider = false;
     };
 
-    useLayoutEffect(() => {
-        if (scrollSliderRef.current !== null)
-            scrollSliderRef.current.value = scrollPercentage;
-        window.scroll(0, scrollPercentageToHeight(scrollPercentage));
-    }, [scrollPercentage]);
-
-    useLayoutEffect(() => {
+    useEffect(() => {
         window.onscroll = handleWindowScroll;
         scrollSliderRef.current.value = 0;
     }, []);

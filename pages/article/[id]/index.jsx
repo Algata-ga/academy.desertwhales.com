@@ -28,6 +28,8 @@ const Article = ({ article }) => {
         }
     };
 
+    useEffect(() => {}, []);
+
     const [copied, setCopied] = useState(false);
 
     return (
