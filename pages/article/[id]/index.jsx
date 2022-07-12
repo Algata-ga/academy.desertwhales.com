@@ -1,8 +1,7 @@
 import style from "../../../styles/Article.module.css";
-import ReactDOMServer from "react-dom/server";
-import parse, { domToReact } from "html-react-parser";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import useCustomScroll from "../../../hooks/useCustomScroll";
+import ReactDOMServer from "react-dom/server";
 import Head from "next/head";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -10,6 +9,7 @@ import { FaShare } from "react-icons/fa";
 import { BsFonts } from "react-icons/bs";
 import { ImFontSize } from "react-icons/im";
 import { RiFontSize2 } from "react-icons/ri";
+import oembedTagToHTML from "../../../utils/oembedTagToHTML";
 
 const Article = ({ article }) => {
     const sliderRef = useRef();
@@ -146,41 +146,7 @@ export const getServerSideProps = async (context) => {
     const og_article = await response.json();
     const { body, ...rest_of_article } = { ...og_article };
 
-    //this is not good, make a npm package
-    let urls = [];
-    parse(body, {
-        replace: (x) => {
-            if (x.name === "oembed" && x.type === "tag") {
-                urls.push(x.children[0].attribs.href);
-            }
-        },
-    });
-
-    const html_embeds = await Promise.all(
-        urls.map((x) =>
-            fetch(`https://${process.env.IFRAMELY_URL}/oembed?url=${x}`)
-                .then((x) => x.json())
-                .then((x) => x.html)
-        )
-    );
-    let index = -1;
-
-    const parsed_body = parse(body, {
-        htmlparser2: {
-            xmlMode: true,
-        },
-        replace: (x) => {
-            if (x.name === "oembed" && x.type === "tag") {
-                index += 1;
-                if (typeof html_embeds[index] !== "string") {
-                    return x;
-                }
-                const parsed = parse(`<div>${html_embeds[index]}</div>`);
-                return parsed;
-            }
-            return x;
-        },
-    });
+    const parsed_body = await oembedTagToHTML(body);
 
     const article = {
         ...rest_of_article,
